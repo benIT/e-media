@@ -1,13 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-/**
- * @ORM\Entity
- * @Vich\Uploadable
- */
 /**
  * Video
  */
