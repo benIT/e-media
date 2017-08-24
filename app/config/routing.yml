@@ -1,0 +1,5 @@
+app_home:
+    resource: '@AppBundle/Resources/config/routing/home.yml'
+app_video:
+    resource: '@AppBundle/Resources/config/routing/video.yml'
+    prefix: video
