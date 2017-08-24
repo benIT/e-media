@@ -9,10 +9,15 @@ AppBundle\Entity\Video:
             generator:
                 strategy: AUTO
     fields:
-        name:
+        title:
             type: string
             length: 255
         description:
             type: string
             length: 255
+        videoName:
+            type: string
+            length: 255
+            nullable: true
+
     lifecycleCallbacks: {  }

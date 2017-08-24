@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class VideoType extends AbstractType
 {
@@ -13,9 +14,13 @@ class VideoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('description');
+        $builder
+            ->add('title')
+            ->add('description')
+            ->add('videoFile', VichFileType::class)
+        ;
     }
-    
+
     /**
      * {@inheritdoc}
      */

@@ -1,4 +1,4 @@
-#video-app
+# video-app
 
 A symfony 3 POC for a video app.
 

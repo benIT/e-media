@@ -1,7 +1,13 @@
 <?php
 
 namespace AppBundle\Entity;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+/**
+ * @ORM\Entity
+ * @Vich\Uploadable
+ */
 /**
  * Video
  */
@@ -15,12 +21,18 @@ class Video
     /**
      * @var string
      */
-    private $name;
+    private $title;
 
     /**
      * @var string
      */
     private $description;
+
+    private $videoFile;
+
+    private $videoName;
+
+    private $updatedAt;
 
 
     /**
@@ -42,7 +54,7 @@ class Video
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->title = $name;
 
         return $this;
     }
@@ -54,7 +66,7 @@ class Video
      */
     public function getName()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
@@ -80,5 +92,71 @@ class Video
     {
         return $this->description;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getVideoFile()
+    {
+        return $this->videoFile;
+    }
+
+    /**
+     * @param mixed $videoFile
+     */
+    public function setVideoFile($videoFile)
+    {
+        $this->videoFile = $videoFile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVideoName()
+    {
+        return $this->videoName;
+    }
+
+    /**
+     * @param mixed $videoName
+     */
+    public function setVideoName($videoName)
+    {
+        $this->videoName = $videoName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param mixed $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+
 }
 
