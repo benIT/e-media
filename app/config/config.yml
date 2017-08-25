@@ -38,9 +38,10 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
-#    twig:
-#        globals:
-#            version: '%app.title%'
+    globals:
+        app_title: '%app_title%'
+        app_short_title: '%app_short_title%'
+        app_slogan: '%app_slogan%'
 
 
 # Doctrine Configuration

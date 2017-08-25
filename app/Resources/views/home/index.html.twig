@@ -1,29 +1,34 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1>Welcome to your fav video app</h1>
-                <div class="row">
-                    <div class="col-md-offset-2 col-md-6">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi eaque magnam quasi vel. Ab dignissimos distinctio, error esse hic nesciunt quibusdam tempora ut. Aliquam animi facilis neque
-                            nihil quod
-                            sapiente. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum deserunt impedit iusto quod totam! A commodi, dolorem ducimus ea labore neque nostrum, numquam obcaecati odit quidem
-                            repudiandae
-                            sit, suscipit tenetur? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur deserunt itaque pariatur rem saepe. Aliquam aliquid amet eligendi enim ipsum, minima mollitia
-                            porro
-                            praesentium, quia rem, saepe sint sit ullam.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-offset-2 col-md-6">
-                        <a class="btn btn-primary" href="{{ path('video_index') }}">Video management</a>
-                        <a class="btn btn-default" href="#">User management</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+    <div class="jumbotron">
+        <h1>{{ app_short_title }}</h1>
+        <p class="lead">{{ app_slogan }}</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
     </div>
+
+    <div class="row marketing">
+        <div class="col-lg-6">
+            <h3>Functional features</h3>
+            <h4>Video management</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+            <h4>User management</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>Webservices</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+
+        <div class="col-lg-6">
+            <h3>Technical features</h3>
+            <h4>Symfony 3</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+            <h4>PostGreSQL</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>LDAP authentication possible</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
     </div>
 {% endblock %}

@@ -2,6 +2,10 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
+    app_title: Symfony 3 video app POC
+    app_short_title: my cool video app
+    app_slogan: the aim of this app is to manage videos with elegance based on sf3.
+
     database_host: 127.0.0.1
     database_port: ~
     database_name: videoapp
