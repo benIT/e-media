@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class VideoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLatest($nth)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT v FROM AppBundle:Video v ORDER BY v.id DESC'
+            )
+            ->setMaxResults($nth)->getResult();
+    }
 }

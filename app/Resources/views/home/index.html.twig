@@ -3,16 +3,32 @@
     <div class="jumbotron">
         <h1>{{ app_short_title }}</h1>
         <p class="lead">{{ app_slogan }}</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
-    </div>
+        {#<p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>#}
+        <div class="row">
+            {% if latestVideos %}
+                <h2>Latest videos</h2>
+                {% for  video in latestVideos %}
+                    <div class="col-md-4">
+                        <em>{{ video.title }}</em>
+                        <video width="200" controls>
+                            <source src="{{ vich_uploader_asset(video, 'videoFile') }}" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <em>no video yet.<a href="{{ path('video_new') }}">Upload one.</a></em>
+            {% endif %}
 
+        </div>
+    </div>
     <div class="row marketing">
         <div class="col-lg-6">
             <h3>Functional features</h3>
-            <h4>Video management</h4>
+            <h4><a href="{{ path('video_index') }}">Video management</a></h4>
             <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-            <h4>User management</h4>
+            <h4><a href="{{ path('video_index') }}">User management</a></h4>
             <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
             <h4>Webservices</h4>
