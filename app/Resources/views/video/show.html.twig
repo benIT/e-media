@@ -5,18 +5,27 @@
 
     <table>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ video.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ video.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ video.description }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ video.id }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ video.title }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ video.description }}</td>
+        </tr>
+        <tr>
+            <th>video</th>
+            <td>
+                <video width="400" controls>
+                    <source src="{{ vich_uploader_asset(video, 'videoFile') }}" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+            </td>
+        </tr>
         </tbody>
     </table>
 
@@ -29,7 +38,7 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>
