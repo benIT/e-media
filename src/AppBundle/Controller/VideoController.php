@@ -45,7 +45,8 @@ class VideoController extends Controller
             return $this->redirectToRoute('video_show', array('id' => $video->getId()));
         }
 
-        return $this->render('video/new.html.twig', array(
+        return $this->render('video/edit.html.twig', array(
+            'title' => 'Create a new video',
             'video' => $video,
             'form' => $form->createView(),
         ));
@@ -71,7 +72,6 @@ class VideoController extends Controller
      */
     public function editAction(Request $request, Video $video)
     {
-        $deleteForm = $this->createDeleteForm($video);
         $editForm = $this->createForm('AppBundle\Form\VideoType', $video);
         $editForm->handleRequest($request);
 
@@ -82,9 +82,9 @@ class VideoController extends Controller
         }
 
         return $this->render('video/edit.html.twig', array(
+            'title' => 'Edit a video',
             'video' => $video,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'form' => $editForm->createView(),
         ));
     }
 
@@ -101,9 +101,12 @@ class VideoController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($video);
             $em->flush();
+            return $this->redirectToRoute('video_index');
         }
-
-        return $this->redirectToRoute('video_index');
+        return $this->render('video/delete.twig', array(
+            'video' => $video,
+            'form' => $form->createView(),
+        ));
     }
 
     /**
@@ -117,8 +120,7 @@ class VideoController extends Controller
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('video_delete', array('id' => $video->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
+//            ->setMethod('DELETE')
+            ->getForm();
     }
 }

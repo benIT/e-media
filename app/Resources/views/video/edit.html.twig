@@ -1,21 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Video edit</h1>
+    <h1>{{ title }}</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        <label class="custom-file">
+            {#<input type="file" id="file" class="custom-file-input">#}
+            {{ form_widget(form.videoFile, {'attr': {'class': 'custom-file-input'}}) }}
+            <span class="custom-file-control"></span>
+        </label>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="Save"/>
+    </div>
+    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('video_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <a class="" href="{{ path('video_index') }}">Back to the list</a>
 {% endblock %}

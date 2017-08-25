@@ -1,45 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Video</h1>
-
-    <table>
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ video.id }}</td>
-        </tr>
-        <tr>
-            <th>Title</th>
-            <td>{{ video.title }}</td>
-        </tr>
-        <tr>
-            <th>Description</th>
-            <td>{{ video.description }}</td>
-        </tr>
-        <tr>
-            <th>video</th>
-            <td>
-                <video width="400" controls>
+    <h1>{{ video.title }}</h1>
+    <div class="row marketing">
+        <div style="background-color: #eceeef;border-radius: 3px; padding: 20px" class="col-lg-12">
+            <p class="lead"> {{ video.description }}</p>
+            <div align="center" class="embed-responsive embed-responsive-16by9">
+                <video controls autoplay class="embed-responsive-item">
                     <source src="{{ vich_uploader_asset(video, 'videoFile') }}" type="video/mp4">
-                    Your browser does not support HTML5 video.
                 </video>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('video_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('video_edit', { 'id': video.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+        <a class="btn btn-primary" href="{{ path('video_index') }}">Back to the list</a>
+    </div>
 {% endblock %}

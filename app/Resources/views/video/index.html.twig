@@ -2,15 +2,16 @@
 
 {% block body %}
     <h1>Videos list</h1>
+    <a class="btn btn-primary" href="{{ path('video_new') }}">Create a new video</a>
 
-    <table>
+    <table class="table table-striped table-hover">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for video in videos %}
@@ -19,23 +20,12 @@
                 <td>{{ video.title }}</td>
                 <td>{{ video.description }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('video_show', { 'id': video.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('video_edit', { 'id': video.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="glyphicon glyphicon-play" href="{{ path('video_show', { 'id': video.id }) }}"></a> &nbsp;
+                    <a class="glyphicon glyphicon-edit" href="{{ path('video_edit', { 'id': video.id }) }}"></a> &nbsp;
+                    <a class="glyphicon glyphicon-remove" href="{{ path('video_delete', { 'id': video.id }) }}"></a> &nbsp;
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('video_new') }}">Create a new video</a>
-        </li>
-    </ul>
 {% endblock %}

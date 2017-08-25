@@ -21,4 +21,4 @@ video_edit:
 video_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Video:delete" }
-    methods:  DELETE
+#    methods:  DELETE

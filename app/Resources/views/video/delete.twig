@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Delete video '{{ video.title }}' ?</h1>
+
+   {{ form_start(form) }}
+    <input class="btn btn-danger" type="submit" value="Delete video">
+    {{ form_end(form) }}
+
+    <a class="" href="{{ path('video_index') }}">Back to the list</a>
+{% endblock %}

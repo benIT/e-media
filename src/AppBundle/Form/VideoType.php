@@ -17,8 +17,9 @@ class VideoType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('videoFile', VichFileType::class)
-        ;
+            ->add('videoFile', VichFileType::class, [
+                'allow_delete' => false,
+            ]);
     }
 
     /**
