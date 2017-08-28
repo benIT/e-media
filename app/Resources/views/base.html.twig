@@ -30,19 +30,61 @@
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation" class="active"><a href="{{ path('home_index') }}">Home</a></li>
-                <li role="presentation"><a href="#">About</a></li>
-                <li role="presentation"><a href="#">Contact</a></li>
+                <li role="presentation"><a href="{{ path('home_index') }}">Home</a></li>
+                <li role="presentation"><a data-toggle="modal" data-target="#myModal" href="#">About</a></li>
+                <li role="presentation">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    {% else %}
+                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    {% endif %}
+                </li>
             </ul>
         </nav>
         <h3 class="text-muted">{{ app_title }}</h3>
     </div>
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
     {% block body %}{% endblock %}
     <footer class="footer">
         <p>&copy; 2017 ben.IT. <a href="https://github.com/benIT/sf3-video-app">source code on github</a></p>
     </footer>
 </div> <!-- /container -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">About</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Want more? Checkout <a href="https://github.com/benIT/sf3-video-app">github project page</a>.</p>
+                <img class="img-responsive" src="https://avatars0.githubusercontent.com/u/2970652?v=4&s=200" alt="ben.IT">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/bower_components/slabText/js/jquery.slabtext.js') }}"></script>
 <script src="{{ asset('assets/dist/js/slabtext.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>

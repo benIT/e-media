@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>User list</h2>
+    <a class="btn btn-primary" href="{{ path('fos_user_registration_register') }}">Create a new user</a>
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <a class="glyphicon glyphicon-play" href="{{ path('fos_user_profile_show', { 'user': user.id }) }}"></a> &nbsp;
+                    <a class="glyphicon glyphicon-edit" href="{{ path('fos_user_profile_edit', { 'user': user.id }) }}"></a> &nbsp;
+                    {#<a class="glyphicon glyphicon-remove" href="{{ path('', { 'id': user.id }) }}"></a> &nbsp;#}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
