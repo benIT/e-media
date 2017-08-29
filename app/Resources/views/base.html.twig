@@ -10,10 +10,11 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>{{ app_title }}</title>
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/custom.css') }}">
     {% block stylesheets %}{% endblock %}
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset('assets/node_modules/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('assets/dist/css/jumbotron-narrow.css') }}" rel="stylesheet">
@@ -41,7 +42,8 @@
         <p>&copy; 2017 ben.IT. <a href="https://github.com/benIT/sf3-video-app">source code on github</a></p>
     </footer>
 </div> <!-- /container -->
-<script src="{{ asset('assets/node_modules/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/slabtext.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

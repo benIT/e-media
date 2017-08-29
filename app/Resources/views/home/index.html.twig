@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="jumbotron">
-        <h1>{{ app_short_title }}</h1>
-        <p class="lead">{{ app_slogan }}</p>
-        {#<p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>#}
+        <h1>
+            <span class="slabtext">{{ app_short_title }}</span>
+        </h1>
+        <p class="lead">
+            <span>{{ app_slogan }}</span>
+        </p>
         <div class="row">
             {% if latestVideos %}
-                <h2>Latest videos</h2>
+                <h2><span class="slabtext">Latest videos</span></h2>
                 {% for  video in latestVideos %}
                     <div class="col-md-4">
                         <em>{{ video.title }}</em>
@@ -47,4 +50,17 @@
             <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
     </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/slabText/css/slabtext.css') }}">
+    <style>
+        h1 {
+            text-shadow: 0px 0px 9px #777;
+        }
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
 {% endblock %}

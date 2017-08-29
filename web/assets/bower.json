@@ -1,0 +1,23 @@
+{
+  "name": "sf3-video-app",
+  "description": "sf3-video-app",
+  "main": "",
+  "authors": [
+    "ben.IT"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/benIT/sf3-video-app",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "FitText.js": "davatron5000/FitText.js#^1.2.0",
+    "slabText": "freqdec/slabText#^2.2.0",
+    "bootstrap": "^3.3.7"
+  }
+}

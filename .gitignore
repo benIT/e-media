@@ -16,5 +16,6 @@
 /vendor/
 /web/bundles/
 /web/assets/node_modules
+/web/assets/bower_components
 .idea/
 web/video
