@@ -7,10 +7,13 @@
     <div class="form-group">
         {{ form_label(form.title) }}
         {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.title) }}
+
     </div>
     <div class="form-group">
         {{ form_label(form.description) }}
         {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.description) }}
     </div>
     <div class="form-group">
         <label class="custom-file">
@@ -18,6 +21,14 @@
             {{ form_widget(form.videoFile, {'attr': {'class': 'custom-file-input'}}) }}
             <span class="custom-file-control"></span>
         </label>
+        {{ form_errors(form.videoFile) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.tags) }}
+        {{ form_widget(form.tags, {'attr': {'class': 'form-control chosen-select'}}) }}
+        {{ form_errors(form.tags) }}
+        <a href="{{ path('tag_new') }}">Create a new tag</a>
     </div>
     <div class="form-group">
         <input class="btn btn-primary" type="submit" value="Save"/>

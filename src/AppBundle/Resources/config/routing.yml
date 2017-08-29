@@ -6,3 +6,6 @@ app_video:
 app_user:
     resource: '@AppBundle/Resources/config/routing/user.yml'
     prefix: user
+app_tag:
+        resource: "@AppBundle/Resources/config/routing/tag.yml"
+        prefix:   /tag

@@ -18,6 +18,7 @@
   "dependencies": {
     "FitText.js": "davatron5000/FitText.js#^1.2.0",
     "slabText": "freqdec/slabText#^2.2.0",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "chosen": "^1.8.0"
   }
 }

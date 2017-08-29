@@ -44,7 +44,8 @@ twig:
         app_title: '%app_title%'
         app_short_title: '%app_short_title%'
         app_slogan: '%app_slogan%'
-
+    form_themes:
+        - 'form/fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
