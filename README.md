@@ -1,12 +1,10 @@
 # video-app
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/benIT/sf3-video-app/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/benIT/sf3-video-app/?branch=dev)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/benIT/sf3-video-app/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/benIT/sf3-video-app/?branch=dev) [![Build Status](https://scrutinizer-ci.com/g/benIT/sf3-video-app/badges/build.png?b=dev)](https://scrutinizer-ci.com/g/benIT/sf3-video-app/build-status/dev)
 
-[![Build Status](https://scrutinizer-ci.com/g/benIT/sf3-video-app/badges/build.png?b=dev)](https://scrutinizer-ci.com/g/benIT/sf3-video-app/build-status/dev)
+## Purpose
 
-##Purpose
-
-A symfony 3 POC for a video app
+This project provides a basic layer to manage videos based on [symfony 3](https://symfony.com/).
 
 
 ## Installation 
