@@ -1,5 +1,5 @@
 {
-    "name": "vagrant/video-app",
+    "name": "benIT/video-app",
     "license": "proprietary",
     "type": "project",
     "autoload": {
