@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Tag edit</h2>
+
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.name) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.restricted) }}
+        {{ form_widget(form.restricted, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.restricted) }}
+    </div>
+        <input type="submit" value="Save" />
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Video
  */
@@ -28,6 +30,28 @@ class Video
 
     private $updatedAt;
 
+    private $tags;
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param ArrayCollection $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
+    public function addTag($tag)
+    {
+        $this->tags->add($tag);
+    }
 
     /**
      * Get id
@@ -151,6 +175,10 @@ class Video
         $this->title = $title;
     }
 
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
 
 }
 
