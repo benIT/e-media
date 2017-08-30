@@ -9,7 +9,11 @@ This project provides a basic layer to manage videos based on [symfony 3](https:
 
 ## Installation 
 
-### DB
+### Apache2 web server
+
+For setting Apache2 as a webserver to run, the app see [apache2 setup page](doc/apache.md)
+
+### PostgreSQL Database
 
 App is configured for PostgreSQL see [this doc for PostgreSQL setup](doc/db.md).
 
