@@ -51,12 +51,15 @@
         ],
         "post-install-cmd": [
             "@symfony-scripts",
+            "@bower",
             "@test"
         ],
         "post-update-cmd": [
             "@symfony-scripts"
         ],
-        "test": "vendor/phpunit/phpunit/phpunit"
+        "test": "vendor/phpunit/phpunit/phpunit",
+        "bower": "cd web/assets/ && bower install"
+
     },
     "config": {
         "sort-packages": true
