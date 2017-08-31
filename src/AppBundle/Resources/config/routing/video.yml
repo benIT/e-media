@@ -22,3 +22,8 @@ video_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Video:delete" }
 #    methods:  DELETE
+
+video_stream:
+    path:     /{id}/stream
+    defaults: { _controller: "AppBundle:Video:stream" }
+    methods:  GET

@@ -4,7 +4,12 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\File\Stream;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Video controller.
@@ -122,5 +127,13 @@ class VideoController extends Controller
             ->setAction($this->generateUrl('video_delete', array('id' => $video->getId())))
 //            ->setMethod('DELETE')
             ->getForm();
+    }
+
+    public function streamAction(Video $video)
+    {
+        $videoPath = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
+        $stream = new Stream($videoPath);
+        $response = new BinaryFileResponse($stream);
+        return $response;
     }
 }
