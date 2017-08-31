@@ -26,6 +26,7 @@ class VideoType extends AbstractType
             ))
             ->add('videoFile', VichFileType::class, [
                 'allow_delete' => false,
+                'required' => $options['action_type'] === 'create',
             ]);
     }
 
@@ -35,7 +36,8 @@ class VideoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Video'
+            'data_class' => 'AppBundle\Entity\Video',
+            'action_type' => 'create'
         ));
     }
 
