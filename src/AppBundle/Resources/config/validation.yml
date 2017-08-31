@@ -1,0 +1,6 @@
+AppBundle\Entity\Video:
+    properties:
+        videoFile:
+            - File:
+                maxSize: 1024M
+                mimeTypes: [video/mp4, video/x-flv,video/3gpp,video/3gpp2]
