@@ -1,25 +1,58 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/video.js/dist/video-js.css') }}">
+    <style>
+        .vjs-paused .vjs-big-play-button { display: none; }
+    </style>
+{% endblock %}
 
 {% block body %}
     <h2>{{ video.title }}</h2>
     <div class="row marketing">
         <div style="background-color: #eceeef;border-radius: 3px; padding: 20px" class="col-lg-12">
             <p class="lead"> {{ video.description }}</p>
-            <div align="center" class="embed-responsive embed-responsive-16by9">
-                <video controls autoplay class="embed-responsive-item">
-                    <source src="{{ vich_uploader_asset(video, 'videoFile') }}" type="video/mp4">
-                </video>
-            </div>
-
-
-            {% set videoLink =  vich_uploader_asset(video, 'videoFile') %}
-
-            <a href="{{ videoLink }}">Video link</a>
-            <a href="{{ qrcode_path(videoLink) }}">QR code link</a>
-
-
-
+            <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+                   poster="{{ asset('assets/dist/image/video-poster.png') }}"
+                   data-setup="{}">
+                <source src="{{ path('video_stream',{'id':video.id}) }}" type='video/mp4'>
+                {#<source src="MY_VIDEO.webm" type='video/webm'>#}
+                <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a web browser that
+                    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                </p>
+            </video>
         </div>
-        <a class="btn btn-primary" href="{{ path('video_index') }}">Back to the list</a>
+        <a data-toggle="modal" data-target="#modal-share-video" href="#">Share</a>
+
     </div>
+    <a class="btn btn-primary" href="{{ path('video_index') }}">Back to the list</a>
+    <div class="modal fade" id="modal-share-video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Share</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        {% set videoLink =   absolute_url(path('video_stream',{'id':video.id})) %}
+                        <a href="{{ videoLink }}">{{ videoLink }}</a>
+                        <img src="{{ qrcode_path(videoLink) }}" alt="qrcode">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/bower_components/video.js/dist/ie8/videojs-ie8.min.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/video.js/node_modules/video.js/dist/video.min.js') }}"></script>
 {% endblock %}

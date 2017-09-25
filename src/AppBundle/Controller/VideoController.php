@@ -4,7 +4,13 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\Stream;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Video controller.
@@ -34,7 +40,7 @@ class VideoController extends Controller
     public function newAction(Request $request)
     {
         $video = new Video();
-        $form = $this->createForm('AppBundle\Form\VideoType', $video);
+        $form = $this->createForm('AppBundle\Form\VideoType', $video, ['action_type' => 'create']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -72,7 +78,7 @@ class VideoController extends Controller
      */
     public function editAction(Request $request, Video $video)
     {
-        $editForm = $this->createForm('AppBundle\Form\VideoType', $video);
+        $editForm = $this->createForm('AppBundle\Form\VideoType', $video, ['action_type' => 'update']);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -123,4 +129,5 @@ class VideoController extends Controller
 //            ->setMethod('DELETE')
             ->getForm();
     }
+
 }

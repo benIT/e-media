@@ -1,0 +1,4 @@
+video_stream:
+    path:     /{id}
+    defaults: { _controller: "AppBundle:Stream:stream" }
+    methods:  GET

@@ -52,13 +52,15 @@
         "post-install-cmd": [
             "@symfony-scripts",
             "@bower",
+            "videojs",
             "@test"
         ],
         "post-update-cmd": [
             "@symfony-scripts"
         ],
         "test": "vendor/phpunit/phpunit/phpunit",
-        "bower": "cd web/assets/ && bower install"
+        "bower": "cd web/assets/ && bower install",
+        "videojs": "cd web/assets/bower_components/video.js && npm install && grunt dist"
 
     },
     "config": {

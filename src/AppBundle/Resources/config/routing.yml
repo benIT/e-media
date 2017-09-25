@@ -9,3 +9,6 @@ app_user:
 app_tag:
         resource: "@AppBundle/Resources/config/routing/tag.yml"
         prefix:   /tag
+app_stream:
+        resource: "@AppBundle/Resources/config/routing/stream.yml"
+        prefix:   /stream
