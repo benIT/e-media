@@ -20,10 +20,9 @@
                 <td>{{ video.title }}</td>
                 <td>{{ video.description }}</td>
                 <td>
-                    <a class="glyphicon glyphicon-play" href="{{ path('video_show', { 'id': video.id }) }}"></a> &nbsp;
+                    <a class="glyphicon glyphicon-film" href="{{ path('video_show', { 'id': video.id }) }}"></a> &nbsp;
                     <a class="glyphicon glyphicon-edit" href="{{ path('video_edit', { 'id': video.id }) }}"></a> &nbsp;
                     <a class="glyphicon glyphicon-remove" href="{{ path('video_delete', { 'id': video.id }) }}"></a> &nbsp;
-                    <a class="glyphicon glyphicon-film" href="{{ path('video_stream_page', { 'id': video.id }) }}"></a> &nbsp;
                 </td>
             </tr>
         {% endfor %}

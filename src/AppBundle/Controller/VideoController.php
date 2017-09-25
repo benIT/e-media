@@ -130,29 +130,4 @@ class VideoController extends Controller
             ->getForm();
     }
 
-    /**
-     * @see https://symfony.com/doc/current/components/http_foundation.html#serving-files
-     * @param Video $video
-     * @return BinaryFileResponse
-     */
-    public function streamAction(Video $video)
-    {
-        $videoPath = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
-
-        $response = new BinaryFileResponse($videoPath);
-        BinaryFileResponse::trustXSendfileTypeHeader();
-        return $response;
-
-
-    }
-
-    public function pageStreamAction(Video $video)
-    {
-        return $this->render('video/testStream.twig', array(
-            'video' => $video,
-        ));
-
-    }
-
-
 }
