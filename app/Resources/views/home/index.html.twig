@@ -4,7 +4,7 @@
 {% block body %}
     <div class="jumbotron">
         <h1>
-            <span class="slabtext">{{ app_short_title }}</span>
+            {{ app_short_title }}
         </h1>
         <p class="lead">
             <span>{{ app_slogan }}</span>
@@ -31,25 +31,19 @@
         <div class="col-lg-6">
             <h3>{% trans %}functional_features{% endtrans %}</h3>
             <h4><a href="{{ path('video_index') }}">{% trans %}video_management{% endtrans %}</a></h4>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
             <h4><a href="{{ path('user_index') }}">{% trans %}user_management{% endtrans %}</a></h4>
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
             <h4>{% trans %}webservices{% endtrans %}</h4>
-            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
 
         <div class="col-lg-6">
             <h3>{% trans %}technical_features{% endtrans %}</h3>
             <h4>{% trans %}sf3{% endtrans %}</h4>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
             <h4>{% trans %}pgsql{% endtrans %}</h4>
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
             <h4>{% trans %}auth_ldap_possible{% endtrans %}</h4>
-            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
     </div>
 {% endblock %}

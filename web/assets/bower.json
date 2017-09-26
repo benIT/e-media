@@ -20,6 +20,7 @@
     "slabText": "freqdec/slabText#^2.2.0",
     "bootstrap": "^3.3.7",
     "chosen": "^1.8.0",
-    "video.js": "^6.2.8"
+    "video.js": "^6.2.8",
+    "OswaldFont": "googlefonts/OswaldFont"
   }
 }
