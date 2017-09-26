@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{% trans_default_domain "video" %}
 {% block body %}
     <h2>{{ title }}</h2>
 
@@ -28,12 +28,12 @@
         {{ form_label(form.tags) }}
         {{ form_widget(form.tags, {'attr': {'class': 'form-control chosen-select'}}) }}
         {{ form_errors(form.tags) }}
-        <a href="{{ path('tag_new') }}">Create a new tag</a>
+        <a href="{{ path('tag_new') }}">{% trans %}form_create.create_category{% endtrans %}</a>
     </div>
     <div class="form-group">
-        <input class="btn btn-primary" type="submit" value="Save"/>
+        <input class="btn btn-primary" type="submit" value="{% trans from "common"%}save{% endtrans %}"/>
     </div>
     {{ form_end(form) }}
 
-    <a class="" href="{{ path('video_index') }}">Back to the list</a>
+    <a class="" href="{{ path('video_index') }}">{% trans from "common" %}back{% endtrans %}</a>
 {% endblock %}

@@ -46,6 +46,7 @@ class TagController extends Controller
         }
 
         return $this->render('tag/edit.html.twig', array(
+            'title' => $this->get('translator')->trans('form.create', [], 'tag'),
             'tag' => $tag,
             'form' => $form->createView(),
         ));
@@ -82,6 +83,7 @@ class TagController extends Controller
         }
 
         return $this->render('tag/edit.html.twig', array(
+            'title' => $this->get('translator')->trans('form.edit', [], 'tag'),
             'tag' => $tag,
             'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -118,7 +120,6 @@ class TagController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('tag_delete', array('id' => $tag->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

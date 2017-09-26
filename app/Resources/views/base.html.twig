@@ -11,15 +11,16 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>{{ app_title }}</title>
-    <link rel="stylesheet" href="{{ asset('assets/dist/css/custom.css') }}">
-    {% block stylesheets %}{% endblock %}
-
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/bower_components/chosen/chosen.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('assets/dist/css/jumbotron-narrow.css') }}" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/custom.css') }}">
+    {% block stylesheets %}{% endblock %}
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -31,9 +32,10 @@
 <div class="container">
     <div class="header clearfix">
         <nav>
+            <a href="{{ path('home_index') }}" class="navbar-left"><img width="50px" src="{{ asset('assets/dist/image/logo.png') }}"></a>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="{{ path('home_index') }}">{% trans %}home{% endtrans %}</a></li>
-                <li role="presentation"><a data-toggle="modal" data-target="#myModal" href="#">{% trans %}about{% endtrans %}</a></li>
+                <li role="presentation"><a data-toggle="modal" data-target="#myModal" href="#">{% trans %}about.button{% endtrans %}</a></li>
                 <li role="presentation">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
@@ -45,7 +47,7 @@
                 </li>
             </ul>
         </nav>
-        <h3 class="text-muted">{{ app_title }}</h3>
+        <h4 class="text-muted">{{ app_title }}</h4>
     </div>
     {% if app.request.hasPreviousSession %}
         {% for type, messages in app.session.flashbag.all() %}
@@ -58,7 +60,7 @@
     {% endif %}
     {% block body %}{% endblock %}
     <footer class="footer">
-        <p>&copy; 2017 ben.IT. <a href="https://github.com/benIT/sf3-video-app">source code on github</a></p>
+        <p>{% trans %}footer.body{% endtrans %}</p>
     </footer>
 </div> <!-- /container -->
 
@@ -73,7 +75,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Want more? Checkout <a href="https://github.com/benIT/sf3-video-app">github project page</a>.</p>
+                <p>{% trans %}about.modal.body{% endtrans %}</p>
                 <img class="img-responsive" src="https://avatars0.githubusercontent.com/u/2970652?v=4&s=200" alt="ben.IT">
             </div>
             <div class="modal-footer">

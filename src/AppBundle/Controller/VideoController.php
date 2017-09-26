@@ -52,7 +52,7 @@ class VideoController extends Controller
         }
 
         return $this->render('video/edit.html.twig', array(
-            'title' => 'Create a new video',
+            'title' => $this->get('translator')->trans('form_create.create', [], 'video'),
             'video' => $video,
             'form' => $form->createView(),
         ));
@@ -88,7 +88,7 @@ class VideoController extends Controller
         }
 
         return $this->render('video/edit.html.twig', array(
-            'title' => 'Edit a video',
+            'title' => $this->get('translator')->trans('form_create.edit', [], 'video'),
             'video' => $video,
             'form' => $editForm->createView(),
         ));

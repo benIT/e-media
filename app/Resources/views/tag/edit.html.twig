@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% trans_default_domain "tag" %}
 {% block body %}
-    <h2>Tag edit</h2>
+    <h2>{{ title }}</h2>
 
     {{ form_start(form) }}
     <div class="form-group">
@@ -14,7 +14,8 @@
         {{ form_widget(form.restricted, {'attr': {'class': 'form-control'}}) }}
         {{ form_errors(form.restricted) }}
     </div>
-        <input type="submit" value="Save" />
+    <input type="submit" value="{% trans from "common" %}save{% endtrans %}"/>
     {{ form_end(form) }}
+    <a class="" href="{{ path('tag_index') }}">{% trans from "common" %}back{% endtrans %}</a>
 
 {% endblock %}

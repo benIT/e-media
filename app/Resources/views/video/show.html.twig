@@ -2,7 +2,9 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/bower_components/video.js/dist/video-js.css') }}">
     <style>
-        .vjs-paused .vjs-big-play-button { display: none; }
+        .vjs-paused .vjs-big-play-button {
+            display: none;
+        }
     </style>
 {% endblock %}
 
@@ -22,29 +24,29 @@
                 </p>
             </video>
         </div>
-        <a data-toggle="modal" data-target="#modal-share-video" href="#">Share</a>
+        <a data-toggle="modal" data-target="#modal-share-video" href="#">{% trans from "common" %}share{% endtrans %}</a>
 
     </div>
-    <a class="btn btn-primary" href="{{ path('video_index') }}">Back to the list</a>
+    <a class="btn btn-primary" href="{{ path('video_index') }}">{% trans from "common" %}back{% endtrans %}</a>
     <div class="modal fade" id="modal-share-video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Share</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{% trans from "common" %}share{% endtrans %}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">X</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div>
                         {% set videoLink =   absolute_url(path('video_stream',{'id':video.id})) %}
-                        <a href="{{ videoLink }}">{{ videoLink }}</a>
+                        <a href="{{ videoLink }}">{{ videoLink }}</a> <br>
                         <img src="{{ qrcode_path(videoLink) }}" alt="qrcode">
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans from "common" %}modal.close{% endtrans %}</button>
                 </div>
             </div>
         </div>

@@ -13,16 +13,20 @@ class TagType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('restricted');
+        $builder
+            ->add('name', null, ['label' => 'form.name'])
+            ->add('restricted', null, ['label' => 'form.restricted'])
+            ;
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Tag'
+            'data_class' => 'AppBundle\Entity\Tag',
+            'translation_domain' => 'tag'
         ));
     }
 

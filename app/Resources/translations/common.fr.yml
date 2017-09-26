@@ -1,0 +1,13 @@
+save: Enregistrer
+share: Partager
+back: Retour
+modal:
+  close: Fermer
+
+actions: Actions
+create: Créer un nouvel élément
+read: Voir
+update: Mettre à jour
+delete: Supprimer
+yes: Oui
+no: Non

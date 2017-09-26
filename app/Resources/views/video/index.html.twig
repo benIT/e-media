@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
-
+{% trans_default_domain "video" %}
 {% block body %}
-    <h2>Video list</h2>
-    <a class="btn btn-primary" href="{{ path('video_new') }}">Create a new video</a>
+    <h2>{% trans %}index.title{% endtrans %}</h2>
+    <a class="btn btn-primary" href="{{ path('video_new') }}">{% trans %}index.create_video{% endtrans %}</a>
 
     <table class="table table-striped table-hover">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Actions</th>
+            <th>{% trans %}index.id{% endtrans %}</th>
+            <th>{% trans %}index.name{% endtrans %}</th>
+            <th>{% trans %}index.description{% endtrans %}</th>
+            <th>{% trans %}index.actions{% endtrans %}</th>
         </tr>
         </thead>
         <tbody>

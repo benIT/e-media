@@ -1,0 +1,19 @@
+index:
+  title: Liste des vidéos
+  id: identifiant
+  name: nom
+  description: description
+  actions: actions
+  create_video: Créer une vidéo
+delete:
+  title: Supprimer la vidéo '%name%' ?
+  delete_video: Supprimer cette vidéo
+form_create:
+  create: Création d'une nouvelle vidéo
+  edit: Edition d'une vidéo
+  title: Titre
+  description: Description
+  file: Fichier vidéo
+  categories: Categories
+  submit: Enregistrer
+  create_category: Créer une nouvelle catégorie

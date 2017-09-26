@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
-
+{% trans_default_domain "video" %}
 {% block body %}
-    <h2>Delete video '{{ video.title }}' ?</h2>
+    <h2>{% trans with {'%name%':video.title} %}delete.title{% endtrans %}</h2>
 
-   {{ form_start(form) }}
-    <input class="btn btn-danger" type="submit" value="Delete video">
+    {{ form_start(form) }}
+    <input class="btn btn-danger" type="submit" value="{% trans %}delete.delete_video{% endtrans %}">
     {{ form_end(form) }}
 
-    <a class="" href="{{ path('video_index') }}">Back to the list</a>
+    <a class="" href="{{ path('video_index') }}">{% trans from "common" %}back{% endtrans %}</a>
 {% endblock %}

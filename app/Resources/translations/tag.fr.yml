@@ -1,0 +1,11 @@
+index:
+  title: Liste des catégories
+  id: identifiant
+  name: nom
+  restricted: Accès restreind
+  create_tag: Créer une nouvelle catégorie
+form:
+  create: Créer une nouvelle catégorie
+  edit: Editer la catégorie
+  name: Nom de la catégorie
+  restricted: Accès restreint

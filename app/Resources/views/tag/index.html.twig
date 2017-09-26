@@ -1,41 +1,34 @@
 {% extends 'base.html.twig' %}
-
+{% trans_default_domain "tag" %}
 {% block body %}
-    <h2>Tags list</h2>
+    <h2>{% trans %}index.title{% endtrans %}</h2>
+    <a class="btn btn-primary" href="{{ path('tag_new') }}">{% trans %}index.create_tag{% endtrans %}</a>
 
-    <table>
+    <table class="table table-striped table-hover">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Restricted</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>{% trans %}index.id{% endtrans %}</th>
+            <th>{% trans %}index.name{% endtrans %}</th>
+            <th>{% trans %}index.restricted{% endtrans %}</th>
+            <th>{% trans from "common"%}actions{% endtrans %}</th>
+        </tr>
         </thead>
         <tbody>
         {% for tag in tags %}
             <tr>
                 <td><a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.id }}</a></td>
                 <td>{{ tag.name }}</td>
-                <td>{% if tag.restricted %}Yes{% else %}No{% endif %}</td>
+                <td>{{ tag.restricted | boolean }}
+                </td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('tag_show', { 'id': tag.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('tag_edit', { 'id': tag.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="glyphicon glyphicon-film" href="{{ path('tag_show', { 'id': tag.id }) }}"></a> &nbsp;
+                    <a class="glyphicon glyphicon-edit" href="{{ path('tag_edit', { 'id': tag.id }) }}"></a> &nbsp;
+                    <a class="glyphicon glyphicon-remove" href="{{ path('tag_delete', { 'id': tag.id }) }}"></a> &nbsp;
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('tag_new') }}">Create a new tag</a>
-        </li>
-    </ul>
 {% endblock %}
+
+
