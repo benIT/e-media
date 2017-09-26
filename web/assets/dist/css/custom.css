@@ -13,3 +13,15 @@ h1 {
     margin-right: auto;
     border-radius: 5px;
 }
+/*form style*/
+.form-error-message{
+    color: red;
+}
+li.form-error-message {
+    list-style-type: none;
+    margin-left: 0px;
+}
+
+ul.form-error {
+    padding-left: inherit;
+}
