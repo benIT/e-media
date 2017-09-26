@@ -32,7 +32,10 @@
 <div class="container">
     <div class="header clearfix">
         <nav>
-            <a href="{{ path('home_index') }}" class="navbar-left"><img width="50px" src="{{ asset('assets/dist/image/logo.png') }}"></a>
+            <a href="{{ path('home_index') }}" class="navbar-left">
+                <img id="img-logo" src="{{ asset('assets/dist/image/custom-logo.png') }}" alt="{{ app_short_title }}" onerror="this.src='{{ asset('assets/dist/image/default-logo2.png') }}';"/>
+
+            </a>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="{{ path('home_index') }}">{% trans %}home{% endtrans %}</a></li>
                 <li role="presentation"><a data-toggle="modal" data-target="#myModal" href="#">{% trans %}about.button{% endtrans %}</a></li>
@@ -47,7 +50,7 @@
                 </li>
             </ul>
         </nav>
-        <h4 class="text-muted">{{ app_title }}</h4>
+        {#<h4 class="text-muted">{{ app_title }}</h4>#}
     </div>
     {% if app.request.hasPreviousSession %}
         {% for type, messages in app.session.flashbag.all() %}

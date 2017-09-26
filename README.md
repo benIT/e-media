@@ -45,3 +45,13 @@ The [composer.json uses the `post-install-cmd`](composer.json:52) directive to t
 PHPUnit tests can be run through `composer`:
         
         composer test
+
+### Configuration
+
+#### Parameters
+
+During installation, composer will ask you for parameters, otherwise parameters can be set up in `app/config/parameters.yml`. 
+
+#### Logo
+
+To use your custom logo instead of the default one, put it as follow: `web/assets/dist/image/custom-logo.png`
