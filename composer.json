@@ -52,7 +52,7 @@
         "post-install-cmd": [
             "@symfony-scripts",
             "@bower",
-            "videojs",
+            "@videojs",
             "@test"
         ],
         "post-update-cmd": [
