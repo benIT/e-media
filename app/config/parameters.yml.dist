@@ -5,6 +5,8 @@ parameters:
     app_title: Symfony 3 video app POC
     app_short_title: my cool video app
     app_slogan: the aim of this app is to manage videos with elegance based on sf3.
+    app_locale: fr
+    app_number_video_homepage: 6
 
     database_host: 127.0.0.1
     database_port: ~
@@ -21,4 +23,3 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
-    app_locale: fr

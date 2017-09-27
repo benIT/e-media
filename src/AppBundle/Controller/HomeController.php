@@ -14,7 +14,7 @@ class HomeController extends Controller
     {
         $latestVideos = $this->getDoctrine()
             ->getRepository(Video::class)
-            ->findLatest(3);
+            ->findLatest($this->getParameter('app_number_video_homepage'));
         // replace this example code with whatever you need
         return $this->render('home/index.html.twig', [
             'latestVideos' => $latestVideos,
