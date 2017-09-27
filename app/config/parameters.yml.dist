@@ -13,8 +13,12 @@ parameters:
     database_name: videoapp
     database_user: videoapp
     database_password: videoapp
-    # You should uncomment this if you want to use pdo_sqlite
-    #database_path: '%kernel.project_dir%/var/data/data.sqlite'
+
+    database_test_host: 127.0.0.1
+    database_test_port: ~
+    database_test_name: testdb
+    database_test_user: testdb
+    database_test_password: testdb
 
     mailer_transport: smtp
     mailer_host: 127.0.0.1

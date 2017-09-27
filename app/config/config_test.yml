@@ -14,3 +14,15 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+security:
+    firewalls:
+        # replace 'main' by the name of your own firewall
+        main:
+            http_basic: ~
+doctrine:
+    dbal:
+        host:     %database_test_host%
+        dbname:   %database_test_name%
+        user:     %database_test_user%
+        password: %database_test_password%

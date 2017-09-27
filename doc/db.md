@@ -10,11 +10,26 @@
 
 ##### Create a PostgreSQL DB
 
+###### Create app database
+
     ROLE_NAME="videoapp"
     ROLE_PASSWORD="videoapp"
-    DATABASE_NAME="videoapp"
-    sudo -u postgres psql -c "CREATE ROLE ${ROLE_NAME} LOGIN UNENCRYPTED PASSWORD '${ROLE_PASSWORD}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;"
-    sudo -u postgres psql -c "CREATE DATABASE ${DATABASE_NAME}"
-    sudo service postgresql restart
-
+    sudo -u postgres psql -c "CREATE USER ${ROLE_NAME} WITH PASSWORD '${ROLE_PASSWORD}' CREATEDB;"    
+    php bin/console doctrine:database:create
     php bin/console doctrine:schema:create
+    
+###### Create test database
+    
+    ROLE_NAME="testdb"
+    ROLE_PASSWORD="testdb"
+    sudo -u postgres psql -c "CREATE USER ${ROLE_NAME} WITH PASSWORD '${ROLE_PASSWORD}' CREATEDB;"    
+    php bin/console doctrine:database:create --env=test
+    php bin/console doctrine:schema:create --env=test
+
+###### Load fixtures
+    
+    php bin/console doctrine:fixtures:load --no-interaction --env=test
+
+###### Run PHPUnit tests
+
+    vendor/phpunit/phpunit/phpunit
