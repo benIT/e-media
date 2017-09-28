@@ -11,3 +11,4 @@ update: Mettre à jour
 delete: Supprimer
 yes: Oui
 no: Non
+html5_video_not_supported: Votre naviguateur ne prend pas en charge les vidéo HTML5.

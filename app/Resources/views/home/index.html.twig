@@ -17,12 +17,12 @@
                         <em>{{ video.title }}</em>
                         <video width="200" controls>
                             <source src="{{ path('video_stream', { 'id': video.id }) }}" type="video/mp4">
-                            Your browser does not support HTML5 video.
+                            {% trans from "common" %}html5_video_not_supported{% endtrans %}
                         </video>
                     </div>
                 {% endfor %}
             {% else %}
-                <em>no video yet.<a href="{{ path('video_new') }}">Upload one.</a></em>
+                <em>{% trans %}no_video{% endtrans %}<a href="{{ path('video_new') }}">{% trans %}upload_one{% endtrans %}</a></em>
             {% endif %}
 
         </div>
