@@ -51,6 +51,7 @@
         ],
         "post-install-cmd": [
             "@symfony-scripts",
+            "@create-data-dir",
             "@bower",
             "@videojs",
             "@test"
@@ -58,6 +59,7 @@
         "post-update-cmd": [
             "@symfony-scripts"
         ],
+        "create-data-dir": "mkdir -p ../videoapp-data",
         "test": "vendor/phpunit/phpunit/phpunit",
         "bower": "cd web/assets/ && bower install",
         "videojs": "cd web/assets/bower_components/video.js && npm install && grunt dist"
