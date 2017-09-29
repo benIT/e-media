@@ -64,7 +64,8 @@
 
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "process-timeout": 6000
     },
     "extra": {
         "symfony-app-dir": "app",
