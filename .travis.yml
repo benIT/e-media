@@ -1,13 +1,18 @@
 language: php
 
 php:
-  - 5.5
-  - 5.6
   - 7
-  
 
 script:
-  - phpunit tests/
+  - composer test
+  - php bin/console doctrine:schema:validate --env=test
+
+before_install:
+  - npm install -g grunt-cli bower
+  - psql -c "CREATE USER videoapptest WITH PASSWORD 'videoapptest';" -U postgres
+  - psql -c "CREATE DATABASE videoapptest;" -U postgres
 
 install:
   - composer install
+  - composer create-test-schema
+  - php bin/console doctrine:fixtures:load --no-interaction --env=test

@@ -53,16 +53,17 @@
             "@symfony-scripts",
             "@create-data-dir",
             "@bower",
-            "@videojs",
-            "@test"
+            "@videojs"
         ],
         "post-update-cmd": [
             "@symfony-scripts"
         ],
         "create-data-dir": "mkdir -p ../videoapp-data",
+        "create-test-schema": "php bin/console doctrine:schema:create --env=test",
         "test": "vendor/phpunit/phpunit/phpunit",
         "bower": "cd web/assets/ && bower install",
-        "videojs": "cd web/assets/bower_components/video.js && npm install && grunt dist"
+        "videojs": "cd web/assets/bower_components/video.js && npm install && grunt dist",
+        "update-db": "php bin/console doctrine:schema:update --force"
 
     },
     "config": {
