@@ -6,6 +6,7 @@ use AppBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class StreamController extends Controller
 {
@@ -18,8 +19,9 @@ class StreamController extends Controller
     {
         $videoPath = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
         $response = new BinaryFileResponse($videoPath);
+        $response->headers->set('X-Sendfile', $videoPath);
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, basename($videoPath));
         BinaryFileResponse::trustXSendfileTypeHeader();
         return $response;
-
     }
 }
