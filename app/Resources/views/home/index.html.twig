@@ -15,9 +15,15 @@
                 {% for  video in latestVideos %}
                     <div class="col-md-4">
                         <em><a href="{{ path('video_show', {'id':video.id}) }}">{{ video.title }}</a></em>
-                        <video width="200" controls>
-                            <source src="{{ path('video_stream', { 'id': video.id }) }}" type="video/mp4">
-                            {% trans from "common" %}html5_video_not_supported{% endtrans %}
+                        <video id="my-video" class="video-js" controls preload="none" width="200px"
+                               poster="{{ asset('assets/dist/image/video-poster.png') }}"
+                               data-setup="{}">
+                            <source src="{{ path('video_stream',{'id':video.id}) }}" type='video/mp4'>
+                            {#<source src="MY_VIDEO.webm" type='video/webm'>#}
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                            </p>
                         </video>
                     </div>
                 {% endfor %}
@@ -50,6 +56,13 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/bower_components/slabText/css/slabtext.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/video.js/dist/video-js.css') }}">
+    <style>
+        .vjs-paused .vjs-big-play-button {
+            display: none;
+        }
+    </style>
+
     <style>
         h1 {
             text-shadow: 0px 0px 9px #777;
@@ -59,4 +72,6 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('assets/bower_components/video.js/dist/ie8/videojs-ie8.min.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/video.js/dist/video.min.js') }}"></script>
 {% endblock %}
