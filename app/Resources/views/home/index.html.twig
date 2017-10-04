@@ -53,25 +53,3 @@
         </div>
     </div>
 {% endblock %}
-
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/bower_components/slabText/css/slabtext.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bower_components/video.js/dist/video-js.css') }}">
-    <style>
-        .vjs-paused .vjs-big-play-button {
-            display: none;
-        }
-    </style>
-
-    <style>
-        h1 {
-            text-shadow: 0px 0px 9px #777;
-        }
-    </style>
-
-{% endblock %}
-
-{% block javascripts %}
-    <script src="{{ asset('assets/bower_components/video.js/dist/ie8/videojs-ie8.min.js') }}"></script>
-    <script src="{{ asset('assets/bower_components/video.js/dist/video.min.js') }}"></script>
-{% endblock %}

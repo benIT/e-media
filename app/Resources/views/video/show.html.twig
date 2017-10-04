@@ -1,13 +1,4 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/bower_components/video.js/dist/video-js.css') }}">
-    <style>
-        .vjs-paused .vjs-big-play-button {
-            display: none;
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
     <h2>{{ video.title }}</h2>
     <div class="row marketing">
@@ -52,9 +43,4 @@
         </div>
     </div>
 
-{% endblock %}
-
-{% block javascripts %}
-    <script src="{{ asset('assets/bower_components/video.js/dist/ie8/videojs-ie8.min.js') }}"></script>
-    <script src="{{ asset('assets/bower_components/video.js/node_modules/video.js/dist/video.min.js') }}"></script>
 {% endblock %}

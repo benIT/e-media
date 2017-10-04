@@ -1,11 +1,12 @@
+/*fonts*/
 @font-face {
     font-family: "Oswald-Regular";
-    src: url('../../bower_components/OswaldFont/fonts/ttf/Oswald-Regular.ttf') format("truetype");
+    src: url('../fonts/Oswald-Regular.ttf') format("truetype");
 }
 
 @font-face {
     font-family: "Oswald-Bold";
-    src: url('../../bower_components/OswaldFont/fonts/ttf/Oswald-Bold.ttf') format("truetype");
+    src: url('../fonts/Oswald-Bold.ttf') format("truetype");
 }
 
 body {
@@ -17,6 +18,7 @@ h1 {
     text-transform: uppercase;
     line-height: 1;
     font-family: "Oswald-Bold", sans-serif;
+    text-shadow: 0px 0px 9px #777;
 }
 
 .modal-body > .img-responsive {
@@ -43,4 +45,9 @@ li.form-error-message {
 
 ul.form-error {
     padding-left: inherit;
+}
+
+/*videojs*/
+.vjs-paused .vjs-big-play-button {
+    display: none;
 }

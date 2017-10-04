@@ -15,8 +15,9 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-/web/assets/node_modules
-/web/assets/bower_components
+/web/assets/
 .idea/
 web/video
-web/assets/dist/image/custom-logo.png
+bower_components/
+node_modules/
+app/Resources/assets/image/custom-logo.png
