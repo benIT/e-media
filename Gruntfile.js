@@ -2,13 +2,21 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
         copy: {
-            fonts: {
+            appfonts: {
                 files: [{
                     expand: true,
                     cwd: 'bower_components/OswaldFont/fonts/ttf',
                     dest: 'web/assets/dist/fonts',
                     src: ['Oswald-Regular.ttf', 'Oswald-Bold.ttf']
-                }]
+                }],
+            },
+            bootstrapfont: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components/bootstrap/fonts',
+                    dest: 'web/assets/dist/fonts',
+                    src: ['**']
+                }],
             },
             image: {
                 files: [{
