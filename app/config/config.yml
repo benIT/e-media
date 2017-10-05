@@ -44,6 +44,7 @@ twig:
         app_title: '%app_title%'
         app_short_title: '%app_short_title%'
         app_slogan: '%app_slogan%'
+        app_about: '%app_about%'
     form_themes:
         - 'form/fields.html.twig'
 

@@ -7,6 +7,7 @@ parameters:
     app_slogan: the aim of this app is to manage videos with elegance based on sf3.
     app_locale: fr
     app_number_video_homepage: 6
+    app_about: Welcome to this app. Place here a descriptive message about this app
 
     database_host: 127.0.0.1
     database_port: ~
