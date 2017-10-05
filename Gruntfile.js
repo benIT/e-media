@@ -1,31 +1,41 @@
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
+        clean: {
+            assets: ['web/assets'],
+        },
         copy: {
-            appfonts: {
-                files: [{
-                    expand: true,
-                    cwd: 'bower_components/OswaldFont/fonts/ttf',
-                    dest: 'web/assets/dist/fonts',
-                    src: ['Oswald-Regular.ttf', 'Oswald-Bold.ttf']
-                }],
-            },
-            bootstrapfont: {
-                files: [{
-                    expand: true,
-                    cwd: 'bower_components/bootstrap/fonts',
-                    dest: 'web/assets/dist/fonts',
-                    src: ['**']
-                }],
+            fonts: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'bower_components/OswaldFont/fonts/ttf',
+                        dest: 'web/assets/dist/fonts',
+                        src: ['Oswald-Regular.ttf', 'Oswald-Bold.ttf']
+                    },
+                    {
+                        expand: true,
+                        cwd: 'bower_components/bootstrap/fonts',
+                        dest: 'web/assets/dist/fonts',
+                        src: ['**']
+                    }],
             },
             image: {
-                files: [{
-                    expand: true,
-                    cwd: 'app/Resources/assets/image',
-                    dest: 'web/assets/dist/image',
-                    src: ['**']
-                }]
-            }
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'app/Resources/assets/image',
+                        dest: 'web/assets/dist/image',
+                        src: ['**']
+                    },
+                    {
+                        expand: true,
+                        cwd: 'bower_components/chosen/',
+                        dest: 'web/assets/dist/css',
+                        src: ['chosen-sprite.png']
+                    }
+                ]
+            },
         },
         cssmin: {
             options: {
@@ -92,8 +102,6 @@ module.exports = function (grunt) {
                 files: ['app/Resources/assets/image/*'],
                 tasks: ['copy']
             },
-
-
         },
 
     });
