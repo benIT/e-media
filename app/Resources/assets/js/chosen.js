@@ -1,3 +1,4 @@
+//chosen workaround to fix behavior with HTML 5 required tag
 $.fn.oldChosen = $.fn.chosen
 $.fn.chosen = function (options) {
     var select = $(this)
@@ -21,4 +22,3 @@ $.fn.chosen = function (options) {
     }
     return ret
 };
-$('select').chosen({allow_single_deselect: true});
