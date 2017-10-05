@@ -27,8 +27,3 @@ video_search:
     path:     /search
     defaults: { _controller: "AppBundle:Video:search" }
     methods:  GET
-
-video_stream_page:
-    path:     /{id}/test-stream
-    defaults: { _controller: "AppBundle:Video:pageStream" }
-    methods:  GET
