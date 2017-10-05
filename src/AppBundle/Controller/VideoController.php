@@ -94,6 +94,23 @@ class VideoController extends Controller
         ));
     }
 
+    public function searchAction(Request $request)
+    {
+        $form = $this->createForm('AppBundle\Form\VideoSearchType');
+        $form->handleRequest($request);
+        $videos = [];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $criteria = $form->getData();
+            $videos = $this->getDoctrine()->getRepository(Video::class)->findVideo($criteria);
+        }
+        return $this->render('video/search.twig', array(
+            'form' => $form->createView(),
+            'submitted' => $form->isSubmitted(),
+            'videos' => $videos
+        ));
+    }
+
     /**
      * Deletes a video entity.
      *

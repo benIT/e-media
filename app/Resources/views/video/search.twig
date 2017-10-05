@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "video" %}
+{% block body %}
+    <h2><a href="{{ path('video_search') }}">Video search</a></h2>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Search"/>
+    {{ form_end(form) }}
+
+    {% if submitted %}
+        {% if videos %}
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>{% trans %}index.id{% endtrans %}</th>
+                    <th>{% trans %}index.name{% endtrans %}</th>
+                    <th>{% trans %}index.description{% endtrans %}</th>
+                    <th>{% trans %}index.actions{% endtrans %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for video in videos %}
+                    <tr>
+                        <td><a href="{{ path('video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
+                        <td>{{ video.title }}</td>
+                        <td>{{ video.description }}</td>
+                        <td>
+                            <a class="glyphicon glyphicon-film" href="{{ path('video_show', { 'id': video.id }) }}"></a> &nbsp;
+                            <a class="glyphicon glyphicon-edit" href="{{ path('video_edit', { 'id': video.id }) }}"></a> &nbsp;
+                            <a class="glyphicon glyphicon-remove" href="{{ path('video_delete', { 'id': video.id }) }}"></a> &nbsp;
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            no video
+        {% endif %}
+    {% endif %}
+
+    <ul>
+        <li>
+            <a href="{{ path('video_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
