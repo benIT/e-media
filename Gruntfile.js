@@ -2,7 +2,7 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
         clean: {
-            assets: ['web/assets'],
+            assets: ['web/assets/dist'],
         },
         copy: {
             fonts: {
@@ -24,7 +24,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'app/Resources/assets/image',
+                        cwd: 'web/assets/image',
                         dest: 'web/assets/dist/image',
                         src: ['**']
                     },
@@ -39,6 +39,7 @@ module.exports = function (grunt) {
         },
         cssmin: {
             options: {
+                root: 'web/assets/dist/css/',
                 report: 'gzip',
                 keepSpecialComments: 0,
                 sourceMap: true,
@@ -53,8 +54,8 @@ module.exports = function (grunt) {
                         'bower_components/video.js/dist/video-js.css',
                     ],
                     'web/assets/dist/css/app.min.css': [
-                        'app/Resources/assets/css/jumbotron-narrow.css',
-                        'app/Resources/assets/css/custom.css',
+                        'web/assets/css/jumbotron-narrow.css',
+                        'web/assets/css/custom.css',
                     ],
                 }
             }
@@ -63,12 +64,12 @@ module.exports = function (grunt) {
             options: {
                 mangle: false,
                 sourceMap: true,
-                sourceMapIncludeSources: true,
+                // sourceMapIncludeSources: true,
             },
             app: {
                 files: {
                     'web/assets/dist/js/app.min.js': [
-                        'app/Resources/assets/js/*',
+                        'web/assets/js/*',
                     ]
                 }
             }
@@ -91,15 +92,15 @@ module.exports = function (grunt) {
         },
         watch: {
             css: {
-                files: ['app/Resources/assets/css/*'],
+                files: ['web/assets/css/*'],
                 tasks: ['cssmin']
             },
             js: {
-                files: ['app/Resources/assets/js/*.js'],
+                files: ['web/assets/js/*.js'],
                 tasks: ['uglify']
             },
             image: {
-                files: ['app/Resources/assets/image/*'],
+                files: ['web/assets/image/*'],
                 tasks: ['copy']
             },
         },
