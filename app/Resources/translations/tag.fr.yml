@@ -2,10 +2,13 @@ index:
   title: Liste des catégories
   id: identifiant
   name: nom
-  restricted: Accès restreind
+  restricted: Accès restreint
+  number_video: Nombre de vidéos
   create_tag: Créer une nouvelle catégorie
 form:
   create: Créer une nouvelle catégorie
   edit: Editer la catégorie
   name: Nom de la catégorie
   restricted: Accès restreint
+delete:
+  title: Supprimer la catégorie '%name%' ?

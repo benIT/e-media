@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "tag" %}
+{% block body %}
+    <h2>{% trans with {'%name%':tag.name} %}delete.title{% endtrans %}</h2>
+
+    {{ form_start(form) }}
+    <input class="btn btn-danger" type="submit" value="{% trans from "common" %}delete{% endtrans %}">
+    {{ form_end(form) }}
+
+    <a class="back" href="{{ path('tag_index') }}">{% trans from "common" %}back{% endtrans %}</a>
+{% endblock %}

@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class TagController extends Controller
 {
+    use ControllerUtilsTrait;
+
     /**
      * Lists all tag entities.
      *
@@ -41,7 +43,7 @@ class TagController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($tag);
             $em->flush();
-
+            $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
             return $this->redirectToRoute('tag_show', array('id' => $tag->getId()));
         }
 
@@ -59,7 +61,6 @@ class TagController extends Controller
     public function showAction(Tag $tag)
     {
         $deleteForm = $this->createDeleteForm($tag);
-
         return $this->render('tag/show.html.twig', array(
             'tag' => $tag,
             'delete_form' => $deleteForm->createView(),
@@ -78,7 +79,7 @@ class TagController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
             return $this->redirectToRoute('tag_edit', array('id' => $tag->getId()));
         }
 
@@ -103,9 +104,15 @@ class TagController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($tag);
             $em->flush();
+            $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
+            return $this->redirectToRoute('tag_index');
         }
 
-        return $this->redirectToRoute('tag_index');
+
+        return $this->render('tag/delete.twig', array(
+            'tag' => $tag,
+            'form' => $form->createView(),
+        ));
     }
 
     /**

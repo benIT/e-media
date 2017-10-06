@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Video;
+use Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\File\File;
@@ -18,6 +19,8 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 class VideoController extends Controller
 {
+    use ControllerUtilsTrait;
+
     /**
      * Lists all video entities.
      *
@@ -47,7 +50,7 @@ class VideoController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
             $em->flush();
-
+            $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
             return $this->redirectToRoute('video_show', array('id' => $video->getId()));
         }
 
@@ -83,8 +86,8 @@ class VideoController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('video_edit', array('id' => $video->getId()));
+            $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
+            return $this->redirectToRoute('video_index');
         }
 
         return $this->render('video/edit.html.twig', array(
@@ -100,7 +103,6 @@ class VideoController extends Controller
         $form->handleRequest($request);
         $videos = [];
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $criteria = $form->getData();
             $videos = $this->getDoctrine()->getRepository(Video::class)->findVideo($criteria);
         }
@@ -124,6 +126,7 @@ class VideoController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($video);
             $em->flush();
+            $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
             return $this->redirectToRoute('video_index');
         }
         return $this->render('video/delete.twig', array(

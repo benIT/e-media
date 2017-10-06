@@ -1,36 +1,28 @@
 {% extends 'base.html.twig' %}
-
+{% trans_default_domain 'tag' %}
 {% block body %}
-    <h2>Tag</h2>
+    <h2>Tag '{{ tag.name }}'</h2>
+    <div class="row marketing">
+        <div style="background-color: #eceeef;border-radius: 3px; padding: 20px" class="col-lg-12">
+            <ul>
+                <li>{% trans %}index.id{% endtrans %} : {{ tag.id }}</li>
+                <li>{% trans %}index.name{% endtrans %} : {{ tag.name }}</li>
+                <li>{% trans %}index.restricted{% endtrans %} : {{ tag|boolean }}</li>
+                <li>Vidéos :
+                    {% if tag.videos %}
+                        <ul>
+                            {% for video in  tag.videos %}
+                                <li><a href="{{ path('video_show', {'id':video.id}) }}">{{ video.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                    {% endif %}
+                </li>
+            </ul>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ tag.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ tag.name }}</td>
-            </tr>
-            <tr>
-                <th>Restricted</th>
-                <td>{% if tag.restricted %}Yes{% else %}No{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+        </div>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('tag_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('tag_edit', { 'id': tag.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <a class="back" href="{{ path('tag_index') }}">{% trans from "common" %}back{% endtrans %}</a>
+
 {% endblock %}

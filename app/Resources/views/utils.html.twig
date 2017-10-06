@@ -1,0 +1,28 @@
+{% macro video_list(videos) %}
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>{% trans from 'video' %}index.id{% endtrans %}</th>
+            <th>{% trans from 'video' %}index.title{% endtrans %}</th>
+            <th>{% trans from 'video' %}index.tag{% endtrans %}</th>
+            <th>{% trans from 'video' %}index.description{% endtrans %}</th>
+            <th>{% trans from 'video' %}index.actions{% endtrans %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for video in videos %}
+            <tr>
+                <td><a href="{{ path('video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
+                <td>{{ video.title }}</td>
+                <td>{% for tag in video.tags %}<span class="tag"><a href="{{ path('tag_show',{'id':tag.id}) }}">{{ tag.name }}</a></span>{% endfor %}</td>
+                <td>{{ video.description }}</td>
+                <td>
+                    <a class="glyphicon glyphicon-film" href="{{ path('video_show', { 'id': video.id }) }}"></a> &nbsp;
+                    <a class="glyphicon glyphicon-edit" href="{{ path('video_edit', { 'id': video.id }) }}"></a> &nbsp;
+                    <a class="glyphicon glyphicon-remove" href="{{ path('video_delete', { 'id': video.id }) }}"></a> &nbsp;
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endmacro %}

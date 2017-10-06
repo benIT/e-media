@@ -12,3 +12,16 @@ delete: Supprimer
 yes: Oui
 no: Non
 html5_video_not_supported: Votre naviguateur ne prend pas en charge les vidéo HTML5.
+flash:
+  success:
+    type: Succès
+    message: L'action a été effectuée avec succès
+  info:
+    type: Information
+    message: L'action a été prise en compte
+  warning:
+    type: Attention
+    message: L'action a été effectuée avec des avertissements
+  danger:
+    type: Danger
+    message: L'action n'a pas été effectuée correctement

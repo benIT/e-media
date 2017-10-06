@@ -21,4 +21,4 @@ tag_edit:
 tag_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Tag:delete" }
-    methods:  DELETE
+#    methods:  DELETE
