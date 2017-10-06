@@ -7,3 +7,14 @@ AppBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: 100
+        lastName:
+            type: string
+            length: 100
+    oneToMany:
+        videos:
+          targetEntity: AppBundle\Entity\Video
+          mappedBy: creator

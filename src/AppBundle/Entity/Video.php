@@ -32,6 +32,8 @@ class Video
 
     private $tags;
 
+    private $creator;
+
     /**
      * @return ArrayCollection
      */
@@ -179,6 +181,23 @@ class Video
     {
         $this->tags = new ArrayCollection();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCreator()
+    {
+        return $this->creator;
+    }
+
+    /**
+     * @param mixed $creator
+     */
+    public function setCreator($creator)
+    {
+        $this->creator = $creator;
+    }
+
 
 }
 

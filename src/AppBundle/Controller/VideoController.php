@@ -43,6 +43,7 @@ class VideoController extends Controller
     public function newAction(Request $request)
     {
         $video = new Video();
+        $video->setCreator($this->getUser());
         $form = $this->createForm('AppBundle\Form\VideoType', $video, ['action_type' => 'create']);
         $form->handleRequest($request);
 

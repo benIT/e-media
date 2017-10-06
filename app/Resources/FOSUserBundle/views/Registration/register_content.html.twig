@@ -1,10 +1,19 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 <div class="form-group">
+    {{ form_label(form.firstName) }}
+    {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.firstName) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.lastName) }}
+    {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.lastName) }}
+</div>
+<div class="form-group">
     {{ form_label(form.email) }}
     {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
     {{ form_errors(form.email) }}
-
 </div>
 <div class="form-group">
     {{ form_label(form.username) }}

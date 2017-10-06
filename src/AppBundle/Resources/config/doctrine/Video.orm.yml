@@ -31,4 +31,11 @@ AppBundle\Entity\Video:
           inverseJoinColumns:
             tag_id:
               referencedColumnName: id
+    manyToOne:
+        creator:
+          targetEntity: AppBundle\Entity\User
+          inversedBy: videos
+          joinColumn:
+          name: user_id
+          referencedColumnName: id
     lifecycleCallbacks: {  }
