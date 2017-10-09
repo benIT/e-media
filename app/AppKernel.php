@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Endroid\QrCode\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
+            new AppUserBundle\AppUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
