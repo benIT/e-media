@@ -69,9 +69,18 @@ module.exports = function (grunt) {
             app: {
                 files: {
                     'web/assets/dist/js/app.min.js': [
-                        'web/assets/js/*',
+                        'web/assets/js/*js',
                     ]
                 }
+            },
+            translation: {
+                files: [{
+                    expand: true,
+                    cwd: 'web/assets/js/translations/',
+                    src: ['*.js', '!*.min.js'],
+                    dest: 'web/assets/dist/js/translations',
+                    ext: '.min.js'
+                }]
             }
         },
         concat: {
@@ -84,7 +93,8 @@ module.exports = function (grunt) {
                     'bower_components/bootstrap/dist/js/bootstrap.min.js',
                     'bower_components/chosen/chosen.jquery.min.js',
                     'bower_components/video.js/dist/video.js',
-                    'bower_components/slabText/js/jquery.slabtext.js'
+                    'bower_components/slabText/js/jquery.slabtext.js',
+                    'vendor/willdurand/js-translation-bundle/Resources/public/js/translator.min.js'
 
                 ],
                 dest: 'web/assets/dist/js/vendors.min.js'
@@ -97,7 +107,7 @@ module.exports = function (grunt) {
             },
             js: {
                 files: ['web/assets/js/*.js'],
-                tasks: ['uglify']
+                tasks: ['uglify:app']
             },
             image: {
                 files: ['web/assets/image/*'],
@@ -106,5 +116,5 @@ module.exports = function (grunt) {
         },
 
     });
-    grunt.registerTask('default', ["copy", "cssmin", "uglify", "concat"]);
+    grunt.registerTask('default', ["copy", "cssmin", "concat", "uglify"]);
 };

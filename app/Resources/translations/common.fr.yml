@@ -25,3 +25,6 @@ flash:
   danger:
     type: Danger
     message: L'action n'a pas été effectuée correctement
+select:
+  single: Sélectionner une valeur
+  multiple: Sélectionner une ou plusieurs valeur(s)

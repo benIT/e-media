@@ -1,7 +1,8 @@
 {% trans_default_domain "base" %}
 {% import '::utils.html.twig' as utils %}
 <!DOCTYPE html>
-<html lang="en">
+{% set locale =  app.request.locale|split('_')[0] %}
+<html lang="{{ locale }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,6 +85,7 @@
     </div>
 </div>
 <script src="{{ asset('assets/dist/js/vendors.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/translations/'~locale~'.min.js') }}"></script>
 <script src="{{ asset('assets/dist/js/app.min.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>

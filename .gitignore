@@ -16,6 +16,7 @@
 /vendor/
 /web/bundles/
 /web/assets/dist/
+/web/assets/js/translations
 .idea/
 web/video
 bower_components/

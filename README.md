@@ -58,3 +58,7 @@ During installation, composer will ask you for parameters, otherwise parameters 
 #### Logo
 
 To use your custom logo instead of the default one, put it as follow: `web/assets/dist/image/custom-logo.png`
+
+### Coding
+
+[see detailed documentation](doc/coding.md)
