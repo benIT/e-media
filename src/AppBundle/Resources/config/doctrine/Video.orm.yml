@@ -23,6 +23,7 @@ AppBundle\Entity\Video:
       tags:
         targetEntity: AppBundle\Entity\Tag
         inversedBy: videos
+        nullable: false
         joinTable:
           name: videos_tags
           joinColumns:
@@ -36,6 +37,7 @@ AppBundle\Entity\Video:
           targetEntity: AppBundle\Entity\User
           inversedBy: videos
           joinColumn:
-          name: user_id
-          referencedColumnName: id
+            name: user_id
+            referencedColumnName: id
+            nullable: false
     lifecycleCallbacks: {  }

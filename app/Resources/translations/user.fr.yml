@@ -1,2 +1,7 @@
+create_button: Créer un nouvel utilisateur
+user_list: Liste des utilisateurs
 first_name: Prénom
 last_name: Nom
+username: Nom d'utilisateur
+video_number: Nombre de vidéos
+email: e-mail

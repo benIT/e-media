@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% trans_default_domain 'tag' %}
 {% block body %}
-    <h2>Tag '{{ tag.name }}'</h2>
+    <h2>{% trans %}tag{% endtrans %} '{{ tag.name }}'</h2>
     <div class="row marketing">
         <div style="background-color: #eceeef;border-radius: 3px; padding: 20px" class="col-lg-12">
             <ul>

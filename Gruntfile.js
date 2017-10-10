@@ -102,7 +102,7 @@ module.exports = function (grunt) {
         },
         watch: {
             css: {
-                files: ['web/assets/css/*'],
+                files: ['web/assets/css/*.css'],
                 tasks: ['cssmin']
             },
             js: {

@@ -1,0 +1,6 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "user" %}
+{% block body %}
+    {{ user.firstName }} {{ user.lastName }}
+    {% transchoice  user.videos|length with {'%count%':  user.videos|length} from "common" %}video{% endtranschoice %}
+{% endblock %}

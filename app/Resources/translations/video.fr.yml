@@ -7,6 +7,7 @@ index:
   actions: Actions
   create_video: Créer une vidéo
   search_video: Rechercher une vidéo
+  created_by: Créateur
 delete:
   title: Supprimer la vidéo '%name%' ?
   delete_video: Supprimer cette vidéo

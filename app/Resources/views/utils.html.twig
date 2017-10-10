@@ -6,6 +6,7 @@
             <th>{% trans from 'video' %}index.title{% endtrans %}</th>
             <th>{% trans from 'video' %}index.tag{% endtrans %}</th>
             <th>{% trans from 'video' %}index.description{% endtrans %}</th>
+            <th>{% trans from 'video' %}index.created_by{% endtrans %}</th>
             <th>{% trans from 'video' %}index.actions{% endtrans %}</th>
         </tr>
         </thead>
@@ -14,8 +15,10 @@
             <tr>
                 <td><a href="{{ path('video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
                 <td>{{ video.title }}</td>
-                <td>{% for tag in video.tags %}<span class="tag"><a href="{{ path('tag_show',{'id':tag.id}) }}">{{ tag.name }}</a></span>{% endfor %}</td>
+                <td>{% for tag in video.tags %}
+                        <div class="tag"><a href="{{ path('tag_show',{'id':tag.id}) }}">{{ tag.name|slice(0,20) }}</a></div>{% endfor %}</td>
                 <td>{{ video.description }}</td>
+                <td><a href="{{ path('user_show',{'id':video.creator.id}) }}">{{ video.creator }}</a></td>
                 <td>
                     <a class="glyphicon glyphicon-film" href="{{ path('video_show', { 'id': video.id }) }}"></a> &nbsp;
                     <a class="glyphicon glyphicon-edit" href="{{ path('video_edit', { 'id': video.id }) }}"></a> &nbsp;

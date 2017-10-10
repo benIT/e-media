@@ -7,11 +7,12 @@
     z-index: 9999;
 }
 
-span.tag {
+div.tag {
     border: 1px solid #222222;
     padding: 3px;
-    margin-right: 5px;
+    margin: 5px;
     border-radius: 5px;
+    text-align: center;
 }
 
 /*fonts*/
@@ -35,6 +36,11 @@ h1 {
     line-height: 1;
     font-family: "Oswald-Bold", sans-serif;
     text-shadow: 0px 0px 9px #777;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+    text-align: center;
 }
 
 .modal-body > .img-responsive {

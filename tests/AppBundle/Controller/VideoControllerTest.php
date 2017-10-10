@@ -12,7 +12,7 @@ class VideoControllerTest extends WebTestCase
 
     protected function setUp()
     {
-        $testUser = UserFixturesData::$data[0];
+        $testUser = UserFixturesData::$data[0]['firstName'];
         $this->authInfo = [
             'PHP_AUTH_USER' => $testUser,
             'PHP_AUTH_PW' => $testUser
@@ -46,7 +46,7 @@ class VideoControllerTest extends WebTestCase
 
 
         $client->request('GET', $route);
-//        $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
+        $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
 
     }
 }

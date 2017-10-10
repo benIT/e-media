@@ -1,9 +1,10 @@
+video: '{0}|{1}%count% vidéo|]1,Inf] %count% vidéos'
 save: Enregistrer
 share: Partager
 back: Retour
 modal:
   close: Fermer
-
+id: Identifiant
 actions: Actions
 create: Créer un nouvel élément
 read: Voir
