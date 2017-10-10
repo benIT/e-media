@@ -1,6 +1,6 @@
 # video-app
 
-[![Build Status](https://travis-ci.org/benIT/videoapp.svg?branch=dev)](https://travis-ci.org/benIT/sf3-video-app) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/benIT/sf3-video-app/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/benIT/sf3-video-app/?branch=dev) 
+[![Build Status](https://travis-ci.org/benIT/videoapp.svg?branch=dev)](https://travis-ci.org/benIT/videoapp) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/benIT/sf3-video-app/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/benIT/sf3-video-app/?branch=dev) 
 
 ## Purpose
 
