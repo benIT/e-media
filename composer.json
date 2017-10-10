@@ -55,7 +55,7 @@
     "post-install-cmd": [
       "@symfony-scripts",
       "@create-data-dir",
-      "@bower",
+      "@install-assets",
       "@videojs",
       "@dump-translation",
       "@build-assets"
@@ -66,7 +66,7 @@
     "create-data-dir": "mkdir -p ../videoapp-data",
     "create-test-schema": "php bin/console doctrine:schema:create --env=test",
     "test": "vendor/phpunit/phpunit/phpunit",
-    "bower": "bower install",
+    "install-assets": "npm install && bower install",
     "videojs": "cd bower_components/video.js && npm install && grunt dist",
     "update-db": "php bin/console doctrine:schema:update --force",
     "dump-translation": "php bin/console bazinga:js-translation:dump web/assets/js --format=js --merge-domains",
