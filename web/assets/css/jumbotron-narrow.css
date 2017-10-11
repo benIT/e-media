@@ -31,11 +31,10 @@ body {
     border-top: 1px solid #e5e5e5;
 }
 
-
 /* Customize container */
 @media (min-width: 768px) {
     .container {
-        max-width: 1024px;
+        max-width: 780px;
     }
 }
 .container-narrow > hr {
