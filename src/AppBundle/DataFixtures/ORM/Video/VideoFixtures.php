@@ -17,7 +17,7 @@ use  Symfony\Component\Filesystem\Filesystem;
 
 class VideoFixtures extends Fixture
 {
-    const LIMIT = 10;
+    const MAX_TAG = 10;
 
     public function load(ObjectManager $manager)
     {
@@ -36,8 +36,13 @@ class VideoFixtures extends Fixture
             $fs->copy($filePath, $targetfilePath);
             $video->setVideoFile(new UploadedFile($targetfilePath, 'test.mp4', 'video/mp4', null, null, true));
             $video->setCreator($this->getReference($users[array_rand($users)]['firstName']));
-            $video->addTag($this->getReference(TagFixturesData::$data[array_rand(TagFixturesData::$data)]['name']));
-            $video->addTag($this->getReference(TagFixturesData::$data[array_rand(TagFixturesData::$data)]['name']));
+            for ($i = 0; $i < rand(1, self::MAX_TAG); $i++) {
+                $tag = $this->getReference(TagFixturesData::$data[array_rand(TagFixturesData::$data)]['name']);
+                if (!in_array($tag, $video->getTags()->toArray())) {
+                    $video->addTag($tag);
+                }
+            }
+
             $manager->persist($video);
         }
         $manager->flush();
