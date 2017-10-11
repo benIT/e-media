@@ -10,19 +10,17 @@
                 <h2><span class="slabtext">{% trans %}lastest_videos{% endtrans %}</span></h2>
                 {% for  video in latestVideos %}
                     <div class="col-md-4">
-                        <div class="video-thumb">
-                            <em><a href="{{ path('video_show', {'id':video.id}) }}">{{ video.title |slice(0, 30) }}</a></em>
-                            <video id="" class="video-js" controls preload="none"
-                                   poster="{{ asset('assets/dist/image/video-poster.png') }}"
-                                   data-setup="{}">
-                                <source src="{{ path('video_stream',{'id':video.id}) }}" type='video/mp4'>
-                                {#<source src="MY_VIDEO.webm" type='video/webm'>#}
-                                <p class="vjs-no-js">
-                                    To view this video please enable JavaScript, and consider upgrading to a web browser that
-                                    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                                </p>
-                            </video>
-                        </div>
+                        <em><a href="{{ path('video_show', {'id':video.id}) }}">{{ video.title |slice(0,20)}}</a></em>
+                        <video id="my-video" class="video-js" controls preload="none" width="200px"
+                               poster="{{ asset('assets/dist/image/video-poster.png') }}"
+                               data-setup="{}">
+                            <source src="{{ path('video_stream',{'id':video.id}) }}" type='video/mp4'>
+                            {#<source src="MY_VIDEO.webm" type='video/webm'>#}
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                            </p>
+                        </video>
                     </div>
                 {% endfor %}
             {% else %}
