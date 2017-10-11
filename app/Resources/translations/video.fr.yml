@@ -1,7 +1,7 @@
 index:
   title: Liste des vidéos
   id: Identifiant
-  title: Titre
+  video_title: Titre
   tag: Catégories
   description: Description
   actions: Actions
