@@ -51,7 +51,7 @@ module.exports = function (grunt) {
                         'bower_components/bootstrap/dist/css/bootstrap.min.css',
                         'bower_components/chosen/chosen.min.css',
                         'bower_components/slabText/css/slabtext.css',
-                        'bower_components/video.js/dist/video-js.css',
+                        'bower_components/videosjs-assets/dist/video-js.min.css',
                     ],
                     'web/assets/dist/css/app.min.css': [
                         'web/assets/css/jumbotron-narrow.css',
@@ -92,7 +92,7 @@ module.exports = function (grunt) {
                     'bower_components/jquery/dist/jquery.min.js',
                     'bower_components/bootstrap/dist/js/bootstrap.min.js',
                     'bower_components/chosen/chosen.jquery.min.js',
-                    'bower_components/video.js/dist/video.js',
+                    'bower_components/videosjs-assets/dist/video.min.js',
                     'bower_components/slabText/js/jquery.slabtext.js',
                     'vendor/willdurand/js-translation-bundle/Resources/public/js/translator.min.js'
 
