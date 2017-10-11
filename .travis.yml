@@ -5,6 +5,8 @@ php:
   - 5.6
 
 script:
+  - composer lint-yml
+  - composer lint-twig
   - composer test
   - php bin/console doctrine:schema:validate --env=test
 

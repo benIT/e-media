@@ -68,7 +68,9 @@
     "install-assets": "npm install && bower install",
     "update-db": "php bin/console doctrine:schema:update --force",
     "dump-translation": "php bin/console bazinga:js-translation:dump web/assets/js --format=js --merge-domains",
-    "build-assets": "grunt"
+    "build-assets": "grunt",
+    "lint-yml": "for file in $(find app src -name *.yml); do php bin/console lint:yaml $file; done",
+    "lint-twig": "for file in $(find app src -name *.twig); do php bin/console lint:twig $file; done"
   },
   "config": {
     "sort-packages": true,
