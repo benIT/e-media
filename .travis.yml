@@ -12,8 +12,9 @@ script:
 
 before_install:
   - npm install -g grunt-cli bower
-  - psql -c "CREATE USER videoapptest WITH PASSWORD 'videoapptest';" -U postgres
-  - psql -c "CREATE DATABASE videoapptest;" -U postgres
+  - sudo mysql -uroot -e "CREATE DATABASE emediatest;"
+  - sudo mysql -uroot -e "CREATE USER 'emediatest'@'localhost' IDENTIFIED BY 'emediatest';"
+  - sudo mysql -uroot -e "GRANT ALL ON emediatest.* TO 'emediatest'@'localhost'"
 
 install:
   - composer install

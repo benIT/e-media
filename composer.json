@@ -1,5 +1,5 @@
 {
-  "name": "benIT/video-app",
+  "name": "benIT/e-media",
   "license": "proprietary",
   "type": "project",
   "autoload": {
@@ -62,7 +62,7 @@
     "post-update-cmd": [
       "@symfony-scripts"
     ],
-    "create-data-dir": "mkdir -p ../videoapp-data",
+    "create-data-dir": "mkdir -p ../e-media-data",
     "create-test-schema": "php bin/console doctrine:schema:create --env=test",
     "test": "vendor/phpunit/phpunit/phpunit",
     "install-assets": "npm install && bower install",
@@ -70,7 +70,9 @@
     "dump-translation": "php bin/console bazinga:js-translation:dump web/assets/js --format=js --merge-domains",
     "build-assets": "grunt",
     "lint-yml": "for file in $(find app src -name *.yml); do php bin/console lint:yaml $file; done",
-    "lint-twig": "for file in $(find app src -name *.twig); do php bin/console lint:twig $file; done"
+    "lint-twig": "for file in $(find app src -name *.twig); do php bin/console lint:twig $file; done",
+    "fixtures-test": "php bin/console doctrine:fixtures:load --no-interaction --env=test",
+    "fixtures-dev": "php bin/console doctrine:fixtures:load --no-interaction --env=dev"
   },
   "config": {
     "sort-packages": true,

@@ -1,6 +1,39 @@
-# Apache 2
+# Webserver
 
-## Modules
+## Nginx
+
+    sudo apt-get install -y nginx
+    VHOST=$(cat <<EOF
+    server {
+        listen 80 default_server;
+        listen [::]:80 default_server ipv6only=on;
+    
+        root /vagrant/sites/e-media/web;
+        index app.php index.php index.htm;
+    
+        location / {
+            #dev env
+        #try_files $uri /app_dev.php$is_args$args;
+        #prod env
+        try_files $uri /app.php$is_args$args;
+    
+        }
+    
+        location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/run/php/php7.0-fpm.sock;   
+        }
+    }
+    EOF
+    )
+    echo "${VHOST}" > /etc/nginx/sites-available/emedia
+    sudo rm -f /etc/nginx/sites-enabled/default 
+    sudo ln -s /etc/nginx/sites-available/emedia /etc/nginx/sites-enabled/emedia
+
+
+## Apache 2
+
+### Modules
 
 Install rewrite module: 
        
@@ -12,7 +45,7 @@ Install xsendfile module. This module will be used to delegate apache large vide
 
 Take a look to the configuration in the vhost below.
 
-## Virtual host
+### Virtual host
 
 Here a basic vhost for running the app in `/etc/apache2/sites-available/video-app.conf` file:
 

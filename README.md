@@ -1,6 +1,6 @@
-# video-app
+# e-media
 
-[![Build Status](https://travis-ci.org/benIT/videoapp.svg?branch=dev)](https://travis-ci.org/benIT/videoapp) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/benIT/sf3-video-app/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/benIT/sf3-video-app/?branch=dev) 
+[![Build Status](https://travis-ci.org/benIT/e-media.svg?branch=dev)](https://travis-ci.org/benIT/e-media) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/benIT/e-media/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/benIT/e-media/?branch=dev) 
 
 ## Purpose
 
@@ -9,13 +9,13 @@ This project provides a basic layer to manage videos based on [symfony 3](https:
 
 ## Installation 
 
-### Apache2 web server
+### Web server
 
-For setting Apache2 as a webserver to run, the app see [apache2 setup page](doc/apache.md)
+[see webserver setup page](doc/webserver.md)
 
-### PostgreSQL Database
+### Database
 
-App is configured for PostgreSQL see [this doc for PostgreSQL setup](doc/db.md).
+[see database setup page](doc/db.md)
 
 ### App
 
@@ -25,9 +25,8 @@ App is configured for PostgreSQL see [this doc for PostgreSQL setup](doc/db.md).
 
 Frontend depencies are managed with [bower](https://bower.io/#install-bower).
 
-[Videojs](http://videojs.com/getting-started/) is tracked by bower and is built with [grunt](https://gruntjs.com/getting-started) that relies on [npm](https://nodejs.org/en/download/package-manager/).
 
-**So: [npm](https://nodejs.org/en/download/package-manager/), [grunt](https://gruntjs.com/getting-started), [bower](https://bower.io/#install-bower) must be installed**
+**[npm](https://nodejs.org/en/download/package-manager/), [grunt](https://gruntjs.com/getting-started), [bower](https://bower.io/#install-bower) must be installed**
 
 For information related in frontend, [see this doc page](doc/frontend.md) 
 

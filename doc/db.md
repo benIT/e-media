@@ -1,35 +1,19 @@
-### Database
+# Database
 
-#### Postgres
+To set database, edit the following section in [config.yml](../app/config/config.yml):
 
-##### Install a PostgreSQL server
+    # Doctrine Configuration
+    doctrine:
+        dbal:
+            driver: pdo_mysql
+## mariaDB
+
+    sudo apt-get install -y mariadb-server mariadb-common mariadb-client
+    sudo mysql -uroot -e "CREATE USER 'emedia'@'localhost' IDENTIFIED BY 'emedia';"
+    sudo mysql -uroot -e "GRANT ALL ON *.* TO 'emedia'@'localhost';"
+
+## Postgres
 
     sudo apt-get -y install postgresql phppgadmin php7.0-pgsql
     sudo phpenmod pdo_pgsql
     sudo service apache2 restart
-
-##### Create a PostgreSQL DB
-
-###### Create app database
-
-    ROLE_NAME="videoapp"
-    ROLE_PASSWORD="videoapp"
-    sudo -u postgres psql -c "CREATE USER ${ROLE_NAME} WITH PASSWORD '${ROLE_PASSWORD}' CREATEDB;"    
-    php bin/console doctrine:database:create
-    php bin/console doctrine:schema:create
-    
-###### Create test database
-    
-    ROLE_NAME="testdb"
-    ROLE_PASSWORD="testdb"
-    sudo -u postgres psql -c "CREATE USER ${ROLE_NAME} WITH PASSWORD '${ROLE_PASSWORD}' CREATEDB;"    
-    php bin/console doctrine:database:create --env=test
-    php bin/console doctrine:schema:create --env=test
-
-###### Load fixtures
-    
-    php bin/console doctrine:fixtures:load --no-interaction --env=test
-
-###### Run PHPUnit tests
-
-    vendor/phpunit/phpunit/phpunit
