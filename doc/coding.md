@@ -14,5 +14,6 @@ Translations are managed using symfony domains. Translations are available in [t
 
 - Finally dynamically included (for the required current locale):    
         
-        <script src="{{ asset('assets/dist/js/translations/'~locale~'.min.js') }}"></script>
+            
+            <script src="{{ asset('assets/dist/js/translations/'~locale~'.min.js') }}"></script>
     
