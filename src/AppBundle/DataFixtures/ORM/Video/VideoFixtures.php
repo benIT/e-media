@@ -34,6 +34,7 @@ class VideoFixtures extends Fixture
             $fileName = \filter_var($videoData['title'], FILTER_SANITIZE_EMAIL);
             $targetfilePath = __DIR__ . '/../Data/' . $fileName . 'mp4';
             $fs->copy($filePath, $targetfilePath);
+            $video->setUpdatedAt(new \DateTime());
             $video->setVideoFile(new UploadedFile($targetfilePath, 'test.mp4', 'video/mp4', null, null, true));
             $video->setCreator($this->getReference($users[array_rand($users)]['firstName']));
             for ($i = 0; $i < rand(1, self::MAX_TAG); $i++) {
