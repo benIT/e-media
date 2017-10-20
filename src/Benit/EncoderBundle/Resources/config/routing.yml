@@ -1,0 +1,3 @@
+video_encoder_encode:
+    defaults: { _controller: EncoderBundle:VideoEncoder:encode }
+    path:     /{id}

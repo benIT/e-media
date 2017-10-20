@@ -21,7 +21,7 @@ class AppKernel extends Kernel
             new Endroid\QrCode\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
             new AppUserBundle\AppUserBundle(),
             new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
-
+            new Benit\EncoderBundle\EncoderBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

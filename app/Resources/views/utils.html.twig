@@ -22,7 +22,9 @@
                 <td>
                     <a class="glyphicon glyphicon-film" href="{{ path('video_show', { 'id': video.id }) }}"></a> &nbsp;
                     <a class="glyphicon glyphicon-edit" href="{{ path('video_edit', { 'id': video.id }) }}"></a> &nbsp;
+                    <a class="glyphicon glyphicon glyphicon-tasks" href="{{ path('video_encoder_encode',{'id': video.id}) }}"></a> &nbsp;
                     <a class="glyphicon glyphicon-remove" href="{{ path('video_delete', { 'id': video.id }) }}"></a> &nbsp;
+
                 </td>
             </tr>
         {% endfor %}

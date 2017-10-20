@@ -49,6 +49,7 @@ class VideoController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $video->setUpdatedAt(new \DateTime());
             $em->persist($video);
             $em->flush();
             $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
