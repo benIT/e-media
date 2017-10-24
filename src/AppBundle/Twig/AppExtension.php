@@ -2,7 +2,6 @@
 
 namespace AppBundle\Twig;
 
-
 use Symfony\Component\Translation\TranslatorInterface;
 
 class AppExtension extends \Twig_Extension

@@ -2,10 +2,9 @@
 
 namespace AppBundle\DataFixtures\ORM\Data;
 
-
 class UserFixturesData
 {
-    static $data = [
+    public static $data = [
         ['firstName' => 'mary', 'lastName' => 'smith'],
         ['firstName' => 'patricia', 'lastName' => 'johnson'],
         ['firstName' => 'linda', 'lastName' => 'williams'],

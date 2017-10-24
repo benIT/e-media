@@ -6,7 +6,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Video
+ * Video.
  */
 class User extends BaseUser
 {
@@ -69,13 +69,9 @@ class User extends BaseUser
         $this->videos = $videos;
     }
 
-
     public function __construct()
     {
         parent::__construct();
         $this->videos = new ArrayCollection();
     }
-
-
 }
-

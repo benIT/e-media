@@ -2,10 +2,9 @@
 
 namespace AppBundle\DataFixtures\ORM\Data;
 
-
 class TagFixturesData
 {
-    static $data = [
+    public static $data = [
         ['name' => '9/11 Attacks'],
         ['name' => 'Annuities'],
         ['name' => 'Auto Ego'],

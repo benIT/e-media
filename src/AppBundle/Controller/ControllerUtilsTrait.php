@@ -4,10 +4,10 @@ namespace AppBundle\Controller;
 
 trait ControllerUtilsTrait
 {
-    static $flashSuccess = 'success';
-    static $flashInfo = 'info';
-    static $flashWarning = 'warning';
-    static $flashDanger = 'danger';
+    public static $flashSuccess = 'success';
+    public static $flashInfo = 'info';
+    public static $flashWarning = 'warning';
+    public static $flashDanger = 'danger';
 
     protected function flashMessage($type, $message = null)
     {
@@ -19,10 +19,9 @@ trait ControllerUtilsTrait
             throw new \LogicException('You can not use the addFlash method if sessions are disabled.');
         }
         if (!$message) {
-            $message = $this->get('translator')->trans('flash.' . $type . '.message', [], 'common');
+            $message = $this->get('translator')->trans('flash.'.$type.'.message', [], 'common');
         }
 
         $this->container->get('session')->getFlashBag()->add($type, $message);
-
     }
 }

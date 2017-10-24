@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 /**
- * Tag
+ * Tag.
  */
 class Tag
 {
@@ -21,7 +21,6 @@ class Tag
      * @var bool
      */
     private $restricted;
-
 
     private $videos;
 
@@ -41,9 +40,8 @@ class Tag
         $this->videos = $videos;
     }
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -53,7 +51,7 @@ class Tag
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -67,7 +65,7 @@ class Tag
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -77,9 +75,9 @@ class Tag
     }
 
     /**
-     * Set restricted
+     * Set restricted.
      *
-     * @param boolean $restricted
+     * @param bool $restricted
      *
      * @return Tag
      */
@@ -91,7 +89,7 @@ class Tag
     }
 
     /**
-     * Get restricted
+     * Get restricted.
      *
      * @return bool
      */
@@ -104,6 +102,4 @@ class Tag
     {
         $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 }
-

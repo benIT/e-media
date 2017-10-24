@@ -4,7 +4,6 @@ namespace AppBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
@@ -23,12 +22,12 @@ class VideoType extends AbstractType
                 'class' => 'AppBundle:Tag',
                 'choice_label' => 'name',
                 'multiple' => true,
-                'label' => 'form_create.categories'
+                'label' => 'form_create.categories',
             ))
             ->add('videoFile', VichFileType::class, [
                 'allow_delete' => false,
-                'required' => $options['action_type'] === 'create',
-                'label'=>'form_create.file'
+                'required' => 'create' === $options['action_type'],
+                'label' => 'form_create.file',
             ]);
     }
 
@@ -40,7 +39,7 @@ class VideoType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Video',
             'action_type' => 'create',
-            'translation_domain' => 'video'
+            'translation_domain' => 'video',
         ));
     }
 
@@ -51,6 +50,4 @@ class VideoType extends AbstractType
     {
         return 'appbundle_video';
     }
-
-
 }

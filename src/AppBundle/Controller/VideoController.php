@@ -3,19 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Video;
-use Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\File\Stream;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Video controller.
- *
  */
 class VideoController extends Controller
 {
@@ -23,7 +15,6 @@ class VideoController extends Controller
 
     /**
      * Lists all video entities.
-     *
      */
     public function indexAction()
     {
@@ -38,7 +29,6 @@ class VideoController extends Controller
 
     /**
      * Creates a new video entity.
-     *
      */
     public function newAction(Request $request)
     {
@@ -52,6 +42,7 @@ class VideoController extends Controller
             $em->persist($video);
             $em->flush();
             $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
+
             return $this->redirectToRoute('video_show', array('id' => $video->getId()));
         }
 
@@ -64,7 +55,6 @@ class VideoController extends Controller
 
     /**
      * Finds and displays a video entity.
-     *
      */
     public function showAction(Video $video)
     {
@@ -78,7 +68,6 @@ class VideoController extends Controller
 
     /**
      * Displays a form to edit an existing video entity.
-     *
      */
     public function editAction(Request $request, Video $video)
     {
@@ -88,6 +77,7 @@ class VideoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
+
             return $this->redirectToRoute('video_index');
         }
 
@@ -107,16 +97,16 @@ class VideoController extends Controller
             $criteria = $form->getData();
             $videos = $this->getDoctrine()->getRepository(Video::class)->findVideo($criteria);
         }
+
         return $this->render('video/search.twig', array(
             'form' => $form->createView(),
             'submitted' => $form->isSubmitted(),
-            'videos' => $videos
+            'videos' => $videos,
         ));
     }
 
     /**
      * Deletes a video entity.
-     *
      */
     public function deleteAction(Request $request, Video $video)
     {
@@ -128,8 +118,10 @@ class VideoController extends Controller
             $em->remove($video);
             $em->flush();
             $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
+
             return $this->redirectToRoute('video_index');
         }
+
         return $this->render('video/delete.twig', array(
             'video' => $video,
             'form' => $form->createView(),
@@ -150,5 +142,4 @@ class VideoController extends Controller
 //            ->setMethod('DELETE')
             ->getForm();
     }
-
 }

@@ -4,10 +4,8 @@ namespace AppBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class VideoSearchType extends AbstractType
 {
@@ -22,7 +20,7 @@ class VideoSearchType extends AbstractType
                 'class' => 'AppBundle:Tag',
                 'choice_label' => 'name',
                 'multiple' => true,
-                'label' => 'form_create.categories'
+                'label' => 'form_create.categories',
             ))
             ->add('description');
     }
@@ -35,7 +33,7 @@ class VideoSearchType extends AbstractType
         $resolver->setDefaults(array(
             'method' => 'GET',
             'required' => false,
-            'translation_domain' => 'video'
+            'translation_domain' => 'video',
         ));
     }
 
@@ -46,6 +44,4 @@ class VideoSearchType extends AbstractType
     {
         return 'appbundle_video';
     }
-
-
 }

@@ -24,12 +24,12 @@ class UserFixtures extends Fixture
             $user->setFirstName($username);
             $user->setLastName($userData['lastName']);
             $user->setUsername($username);
-            $user->setEmail($username . '@mail.com');
+            $user->setEmail($username.'@mail.com');
             $user->setPlainPassword($username);
             $user->setEnabled(true);
             $userManager->updateUser($user);
             $this->addReference($username, $user);
-            $count++;
+            ++$count;
             if ($count > self::LIMIT) {
                 break;
             }

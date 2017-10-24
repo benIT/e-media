@@ -15,7 +15,7 @@ class VideoControllerTest extends WebTestCase
         $testUser = UserFixturesData::$data[0]['firstName'];
         $this->authInfo = [
             'PHP_AUTH_USER' => $testUser,
-            'PHP_AUTH_PW' => $testUser
+            'PHP_AUTH_PW' => $testUser,
         ];
     }
 
@@ -35,7 +35,6 @@ class VideoControllerTest extends WebTestCase
 
     public function testShow()
     {
-
         $client = static::createClient();
 
         $route = $client->getKernel()->getContainer()->get('router')->generate('video_show', ['id' => 1]);
@@ -44,9 +43,7 @@ class VideoControllerTest extends WebTestCase
 
         $client->setServerParameters($this->authInfo);
 
-
         $client->request('GET', $route);
         $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
-
     }
 }

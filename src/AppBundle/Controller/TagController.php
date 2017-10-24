@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Tag controller.
- *
  */
 class TagController extends Controller
 {
@@ -16,7 +15,6 @@ class TagController extends Controller
 
     /**
      * Lists all tag entities.
-     *
      */
     public function indexAction()
     {
@@ -31,7 +29,6 @@ class TagController extends Controller
 
     /**
      * Creates a new tag entity.
-     *
      */
     public function newAction(Request $request)
     {
@@ -44,6 +41,7 @@ class TagController extends Controller
             $em->persist($tag);
             $em->flush();
             $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
+
             return $this->redirectToRoute('tag_show', array('id' => $tag->getId()));
         }
 
@@ -56,11 +54,11 @@ class TagController extends Controller
 
     /**
      * Finds and displays a tag entity.
-     *
      */
     public function showAction(Tag $tag)
     {
         $deleteForm = $this->createDeleteForm($tag);
+
         return $this->render('tag/show.html.twig', array(
             'tag' => $tag,
             'delete_form' => $deleteForm->createView(),
@@ -69,7 +67,6 @@ class TagController extends Controller
 
     /**
      * Displays a form to edit an existing tag entity.
-     *
      */
     public function editAction(Request $request, Tag $tag)
     {
@@ -80,6 +77,7 @@ class TagController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
+
             return $this->redirectToRoute('tag_edit', array('id' => $tag->getId()));
         }
 
@@ -93,7 +91,6 @@ class TagController extends Controller
 
     /**
      * Deletes a tag entity.
-     *
      */
     public function deleteAction(Request $request, Tag $tag)
     {
@@ -105,9 +102,9 @@ class TagController extends Controller
             $em->remove($tag);
             $em->flush();
             $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
+
             return $this->redirectToRoute('tag_index');
         }
-
 
         return $this->render('tag/delete.twig', array(
             'tag' => $tag,

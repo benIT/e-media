@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Video
+ * Video.
  */
 class Video
 {
@@ -56,7 +56,7 @@ class Video
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -66,7 +66,7 @@ class Video
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -80,7 +80,7 @@ class Video
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -90,7 +90,7 @@ class Video
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description
      *
@@ -104,7 +104,7 @@ class Video
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string
      */
@@ -197,7 +197,4 @@ class Video
     {
         $this->creator = $creator;
     }
-
-
 }
-

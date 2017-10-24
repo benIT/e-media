@@ -26,7 +26,7 @@ class TagType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Tag',
-            'translation_domain' => 'tag'
+            'translation_domain' => 'tag',
         ));
     }
 
@@ -37,6 +37,4 @@ class TagType extends AbstractType
     {
         return 'appbundle_tag';
     }
-
-
 }

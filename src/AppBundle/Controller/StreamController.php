@@ -12,7 +12,9 @@ class StreamController extends Controller
 {
     /**
      * @see https://symfony.com/doc/current/components/http_foundation.html#serving-files
+     *
      * @param Video $video
+     *
      * @return BinaryFileResponse
      */
     public function streamAction(Request $request, Video $video)
@@ -22,6 +24,7 @@ class StreamController extends Controller
         $response->headers->set('X-Sendfile', $videoPath);
         $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, basename($videoPath));
         BinaryFileResponse::trustXSendfileTypeHeader();
+
         return $response;
     }
 }

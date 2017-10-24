@@ -2,10 +2,9 @@
 
 namespace AppBundle\DataFixtures\ORM\Data;
 
-
 class VideoFixturesData
 {
-    static $data = [
+    public static $data = [
         ['title' => '9/11 Attacks'],
         ['title' => 'Annuities'],
         ['title' => 'Auto Ego'],
