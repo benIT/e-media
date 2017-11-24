@@ -33,3 +33,4 @@ To set DBMS, edit the `Doctrine Configuration` section in [config.yml](../app/co
                         
     sudo apt-get -y install postgresql phppgadmin php7.0-pgsql
     sudo phpenmod pdo_pgsql
+    sudo -u postgres psql -c "CREATE USER emedia WITH PASSWORD 'emedia' CREATEDB;"
