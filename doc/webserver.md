@@ -1,32 +1,55 @@
 # Webserver
 
+[official ressource for webserver configuration](https://symfony.com/doc/current/setup/web_server_configuration.html)
+
+Large video files are served throught `mod_xsendfile` for Apache and `X-Accel` for Nginx.
+
+Those directives will be used to delegate to webserver large video file serving. [See this controller, for example.](../src/AppBundle/Controller/StreamController.php): 
+
 ## Nginx
 
     sudo apt-get install -y nginx
-    VHOST=$(cat <<EOF
-    server {
-        listen 80 default_server;
-        listen [::]:80 default_server ipv6only=on;
+
+### Virtual host
+
+Create a vhost in `/etc/nginx/sites-available/emedia`:
     
+    server {
         root /vagrant/sites/e-media/web;
-        index app.php index.php index.htm;
     
         location / {
-            #dev env
-        #try_files $uri /app_dev.php$is_args$args;
-        #prod env
-        try_files $uri /app.php$is_args$args;
+            try_files $uri /app.php$is_args$args;
+        }
+        location ~ ^/(app_dev|config)\.php(/|$) {
+            fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+            fastcgi_split_path_info ^(.+\.php)(/.*)$;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            fastcgi_param DOCUMENT_ROOT $realpath_root;
+        }
+        location ~ ^/app\.php(/|$) {
+            fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+            fastcgi_split_path_info ^(.+\.php)(/.*)$;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            fastcgi_param DOCUMENT_ROOT $realpath_root;
+            internal;
+        }
     
+        #used: to stream file directly by the server using 'X-Accel'
+        location /stream-files {
+            alias /vagrant/sites/e-media-data;
+            internal;
         }
     
         location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-            fastcgi_pass unix:/run/php/php7.0-fpm.sock;   
+            return 404;
         }
+    
+        error_log /var/log/nginx/emedia_error.log;
+        access_log /var/log/nginx/emedia_access.log;
     }
-    EOF
-    )
-    echo "${VHOST}" > /etc/nginx/sites-available/emedia
+
     sudo rm -f /etc/nginx/sites-enabled/default 
     sudo ln -s /etc/nginx/sites-available/emedia /etc/nginx/sites-enabled/emedia
 
@@ -39,7 +62,7 @@ Install rewrite module:
        
        sudo a2enmod rewrite
        
-Install xsendfile module. This module will be used to delegate apache large video file serving. [See this controller, for example.](../src/AppBundle/Controller/StreamController.php:19): 
+Install xsendfile module.
               
       sudo a2enmod xsendfile
 
