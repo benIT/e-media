@@ -15,11 +15,16 @@ Frontend depencies are managed with [composer](https://getcomposer.org/).
 
 ## Building app
 
-Once dependencies are satisfied, installing the app is quite easy, just clone and run the following command that will build the app!
+Once dependencies are satisfied, just clone and run the following commands that will build the app:
 
-    composer install
-    
-The [composer.json uses the `post-install-cmd`](composer.json:52) directive to trigger all necessaries tasks to build fully the app.    
+      composer install
+      composer install-assets
+      composer dump-translation
+      composer build-assets
+      php bin/console doctrine:database:create
+      php bin/console doctrine:schema:create
+      php bin/console doctrine:migrations:migrate
+      composer fixtures-dev
 
 ## Tests
     
