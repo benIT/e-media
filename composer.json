@@ -23,6 +23,7 @@
   "require": {
     "php": ">=5.5.9",
     "doctrine/doctrine-bundle": "^1.6",
+    "doctrine/doctrine-migrations-bundle": "^1.0",
     "doctrine/orm": "^2.5",
     "endroid/qrcode": "^2.3",
     "friendsofsymfony/user-bundle": "~2.0",
