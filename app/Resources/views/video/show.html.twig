@@ -41,7 +41,7 @@
                     <div>
                         {% set videoLink =   absolute_url(path('video_stream',{'id':video.id})) %}
                         <a href="{{ videoLink }}">{{ videoLink }}</a> <br>
-                        <img src="{{ qrcode_path(videoLink) }}" alt="qrcode">
+                        <img src="{{ qrcode_data_uri(videoLink, { writer: 'svg', size: 150 }) }}"/>
                     </div>
 
                 </div>
