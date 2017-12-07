@@ -45,6 +45,10 @@ Before installing database, checkout the database parameters in `app/config/para
     
     php bin/console doctrine:schema:create
     
+##### Create sessions table 
+
+    php bin/console doctrine:migrations:migrate
+
 ##### Load fixtures 
  
     composer fixtures-dev    
