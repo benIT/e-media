@@ -2,29 +2,24 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    app_title: e-media video streaming
-    app_short_title: e-media video streaming
-    app_slogan: Demonstration application
+    app_title: 'e-media video streaming'
+    app_short_title: 'e-media video streaming'
+    app_slogan: 'Demonstration application'
     app_locale: fr
     app_number_video_homepage: 6
-    app_about: Welcome to this app. e-media video streaming
-
-    database_host: 127.0.0.1
-    database_port: ~
-    database_name: emedia
-    database_user: emedia
-    database_password: emedia
-
+    app_about: 'Welcome to this app. e-media video streaming'
     database_test_host: 127.0.0.1
-    database_test_port: ~
+    database_test_port: null
     database_test_name: emediatest
     database_test_user: emediatest
     database_test_password: emediatest
-
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: no-reply@e-media.com
-    mailer_password: ~
-
-    # A secret key that's used to generate certain security-related tokens
+    mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
+    database_name: '%env(DB_NAME)%'
+    database_host: '%env(DB_HOST)%'
+    database_port: '%env(DB_PORT)%'
+    database_user: '%env(DB_USER)%'
+    database_password: '%env(DB_PWD)%'

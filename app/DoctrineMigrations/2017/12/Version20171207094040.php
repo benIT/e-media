@@ -19,6 +19,7 @@ class Version20171207094040 extends AbstractMigration
     public function up(Schema $schema)
     {
         $dbPlatform = $this->connection->getDatabasePlatform()->getName();
+        $this->abortIf(!in_array($dbPlatform, ['mysql', 'postgresql']), 'Migration can only be executed safely on \'mysql\' or \'postgresql\'.');
         if ($dbPlatform === 'mysql') {
             $this->addSql('
             CREATE TABLE `sessions` (
@@ -28,7 +29,7 @@ class Version20171207094040 extends AbstractMigration
                     `sess_lifetime` MEDIUMINT NOT NULL
                 ) COLLATE utf8_bin, ENGINE = InnoDB;
         ');
-        } elseif ($dbPlatform === 'pgsql') {
+        } elseif ($dbPlatform === 'postgresql') {
             $this->addSql('
             CREATE TABLE sessions (
                 sess_id VARCHAR(128) NOT NULL PRIMARY KEY,
@@ -37,8 +38,6 @@ class Version20171207094040 extends AbstractMigration
                 sess_lifetime INTEGER NOT NULL
             );
         ');
-        } else {
-            $this->abortIf(in_array($dbPlatform, ['mysql', 'pgsql']), 'Migration can only be executed safely on \'mysql\' or \'pgsql\'.');
         }
     }
 

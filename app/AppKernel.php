@@ -6,6 +6,7 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 class AppKernel extends Kernel
 {
     public function registerBundles()
+
     {
         $bundles = [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
@@ -21,6 +22,7 @@ class AppKernel extends Kernel
             new Endroid\QrCode\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
             new AppUserBundle\AppUserBundle(),
             new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
         ];
 
@@ -28,11 +30,12 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
-            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
 
             if ('dev' === $this->getEnvironment()) {
-                $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-                $bundles[] = new Symfony\Bundle\WebServerBundle\WebServerBundle();
+                //todo : heroku issue to fix
+//                $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+//                $bundles[] = new Symfony\Bundle\WebServerBundle\WebServerBundle();
+
             }
         }
 

@@ -10,7 +10,15 @@ To set DBMS, edit the `Doctrine Configuration` section in [config.yml](../app/co
     doctrine:
         dbal:
             driver: pdo_mysql
+            
+### PdoSessionHandler section in [services.yml](../app/config/services.yml):
+            
 
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
+        public:    false
+        arguments:
+            - 'mysql:host=%database_host%;dbname=%database_name%'
+            - { db_username: '%database_user%', db_password: '%database_password%' }
 
 ### Server requirement
 
@@ -28,7 +36,14 @@ To set DBMS, edit the `Doctrine Configuration` section in [config.yml](../app/co
         dbal:
             driver: pdo_pgsql            
           
-          
+### PdoSessionHandler section in [services.yml](../app/config/services.yml):
+
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
+        public:    false
+        arguments:
+            - 'pgsql:host=%database_host%;dbname=%database_name%'
+            - { db_username: '%database_user%', db_password: '%database_password%' }   
+                   
 ### Server requirement
                         
     sudo apt-get -y install postgresql phppgadmin php7.0-pgsql
