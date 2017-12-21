@@ -17,10 +17,15 @@ This project provides a basic layer to manage videos based on [symfony 3](https:
 
 [see database setup page](doc/db.md)
 
-
-
 ### Application
 
+#### Environment variables 
+
+    export DB_NAME=emedia 
+    export DB_USER=emedia 
+    export DB_PWD=emedia 
+    export DB_PORT=null 
+    export DB_HOST=localhost
 
 #### Install sources
 
