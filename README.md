@@ -1,6 +1,6 @@
 # e-media
 
-[![Build Status](https://travis-ci.org/benIT/e-media.svg?branch=dev)](https://travis-ci.org/benIT/e-media) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/benIT/e-media/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/benIT/e-media/?branch=dev) 
+[![Build Status](https://travis-ci.org/benIT/e-media.svg?branch=master)](https://travis-ci.org/benIT/e-media) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/benIT/e-media/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/benIT/e-media/?branch=master) 
 
 ## Purpose
 
