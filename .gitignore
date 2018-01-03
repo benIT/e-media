@@ -22,3 +22,5 @@ web/video
 bower_components/
 node_modules/
 web/assets/image/custom-logo.png
+*.log
+e-media-data/
