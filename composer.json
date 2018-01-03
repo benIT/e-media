@@ -58,8 +58,7 @@
     ],
     "post-install-cmd": [
       "@symfony-scripts",
-      "@create-data-dir",
-      "@update-db"
+      "@create-data-dir"
     ],
     "post-update-cmd": [
       "@symfony-scripts"
