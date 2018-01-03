@@ -1,11 +1,14 @@
 {
-  "name": "videoapp-frontend",
-  "version": "0.0.1",
+  "name": "emedia-frontend",
+  "version": "0.0.2",
   "description": "frontend dependencies management and build",
   "author": "benIT",
   "license": "MIT",
   "dependencies": {
-    "bower": "1.8.2",
+    "FitText.js": "davatron5000/FitText.js#^1.2.0",
+    "OswaldFont": "googlefonts/OswaldFont",
+    "bootstrap": "^3.3.7",
+    "chosen-js": "^1.8.0",
     "grunt": "^0.4.5",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.1.0",
@@ -16,9 +19,14 @@
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-typescript": "^0.3.8",
-    "load-grunt-tasks": "^0.6.0"
+    "jquery": "^3.2.1",
+    "load-grunt-tasks": "^0.6.0",
+    "slabText": "freqdec/slabText#^2.2.0",
+    "videosjs-assets": "benIT/videosjs-assets"
   },
   "scripts": {
-    "postinstall": "node_modules/bower/bin/bower install && node_modules/grunt-cli/bin/grunt"
-  }
+    "postinstall": "node_modules/grunt-cli/bin/grunt"
+  },
+  "main": "index.js",
+  "repository": "git@github.com:benIT/e-media.git"
 }

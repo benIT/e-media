@@ -10,7 +10,7 @@ script:
   - php bin/console doctrine:schema:validate --env=test
 
 before_install:
-  - npm install -g grunt-cli bower
+  - npm install -g grunt-cli
   - sudo mysql -uroot -e "CREATE DATABASE emediatest;"
   - sudo mysql -uroot -e "CREATE USER 'emediatest'@'localhost' IDENTIFIED BY 'emediatest';"
   - sudo mysql -uroot -e "GRANT ALL ON emediatest.* TO 'emediatest'@'localhost'"

@@ -9,13 +9,13 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'bower_components/OswaldFont/fonts/ttf',
+                        cwd: 'node_modules/OswaldFont/fonts/ttf',
                         dest: 'web/assets/dist/fonts',
                         src: ['Oswald-Regular.ttf', 'Oswald-Bold.ttf']
                     },
                     {
                         expand: true,
-                        cwd: 'bower_components/bootstrap/fonts',
+                        cwd: 'node_modules/bootstrap/fonts',
                         dest: 'web/assets/dist/fonts',
                         src: ['**']
                     }],
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: 'bower_components/chosen/',
+                        cwd: 'node_modules/chosen-js/',
                         dest: 'web/assets/dist/css',
                         src: ['chosen-sprite.png']
                     }
@@ -48,10 +48,10 @@ module.exports = function (grunt) {
             target: {
                 files: {
                     'web/assets/dist/css/vendors.min.css': [
-                        'bower_components/bootstrap/dist/css/bootstrap.min.css',
-                        'bower_components/chosen/chosen.min.css',
-                        'bower_components/slabText/css/slabtext.css',
-                        'bower_components/videosjs-assets/dist/video-js.min.css',
+                        'node_modules/bootstrap/dist/css/bootstrap.min.css',
+                        'node_modules/chosen-js/chosen.min.css',
+                        'node_modules/slabText/css/slabtext.css',
+                        'node_modules/videosjs-assets/dist/video-js.min.css',
                     ],
                     'web/assets/dist/css/app.min.css': [
                         'web/assets/css/jumbotron-narrow.css',
@@ -89,11 +89,11 @@ module.exports = function (grunt) {
             },
             vendors: {
                 src: [
-                    'bower_components/jquery/dist/jquery.min.js',
-                    'bower_components/bootstrap/dist/js/bootstrap.min.js',
-                    'bower_components/chosen/chosen.jquery.min.js',
-                    'bower_components/videosjs-assets/dist/video.min.js',
-                    'bower_components/slabText/js/jquery.slabtext.js',
+                    'node_modules/jquery/dist/jquery.min.js',
+                    'node_modules/bootstrap/dist/js/bootstrap.min.js',
+                    'node_modules/chosen-js/chosen.jquery.min.js',
+                    'node_modules/videosjs-assets/dist/video.min.js',
+                    'node_modules/slabText/js/jquery.slabtext.js',
                     'vendor/willdurand/js-translation-bundle/Resources/public/js/translator.min.js'
 
                 ],

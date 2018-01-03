@@ -67,7 +67,7 @@
     "create-data-dir": "mkdir -p ../e-media-data",
     "create-test-schema": "php bin/console doctrine:schema:create --env=test",
     "test": "vendor/phpunit/phpunit/phpunit",
-    "install-assets": "npm install && bower install",
+    "install-assets": "yarn install",
     "update-db": "php bin/console doctrine:schema:update --force",
     "dump-translation": "php bin/console bazinga:js-translation:dump web/assets/js --format=js --merge-domains",
     "build-assets": "grunt",
