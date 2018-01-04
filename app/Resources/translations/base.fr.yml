@@ -2,6 +2,6 @@ home: Accueil
 about:
   button: A propos
   modal:
-    body: Plus d'information? Consulter <a href="https://github.com/benIT/sf3-video-app">la page github du projet</a> !
+    body: Plus d'information ? Consulter <a href="https://github.com/benIT/e-media">la page github du projet</a> !
 footer:
-  body: &copy; 2017 ben.IT. <a href="https://github.com/benIT/sf3-video-app">code source sur github</a>
+  body: '&copy; %year% ben.IT. <a href="https://github.com/benIT/e-media">code source sur github</a>'

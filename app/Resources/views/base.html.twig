@@ -52,7 +52,7 @@
     {% endif %}
     {% block body %}{% endblock %}
     <footer class="footer">
-        <p>{% trans %}footer.body{% endtrans %}</p>
+        <p>{% trans with {'%year%': 'now'|date('Y')}  %}footer.body{% endtrans %}</p>
     </footer>
 </div> <!-- /container -->
 
