@@ -11,15 +11,22 @@ script:
 
 before_install:
   - npm install -g grunt-cli
-  - sudo mysql -uroot -e "CREATE DATABASE emediatest;"
-  - sudo mysql -uroot -e "CREATE USER 'emediatest'@'localhost' IDENTIFIED BY 'emediatest';"
-  - sudo mysql -uroot -e "GRANT ALL ON emediatest.* TO 'emediatest'@'localhost'"
+#  - sudo mysql -uroot -e "CREATE DATABASE emediatest;"
+#  - sudo mysql -uroot -e "CREATE USER 'emediatest'@'localhost' IDENTIFIED BY 'emediatest';"
+#  - sudo mysql -uroot -e "GRANT ALL ON emediatest.* TO 'emediatest'@'localhost'"
+  - sudo -u postgres psql -c "CREATE USER emedia WITH PASSWORD 'emedia' CREATEDB;"
+  - sudo -u postgres psql -c "CREATE DATABASE emedia"
+  - sudo -u postgres psql -c "CREATE USER emediatest WITH PASSWORD 'emediatest' CREATEDB;"
+  - sudo -u postgres psql -c "CREATE DATABASE emediatest"
 
 install:
   - composer install
   - composer install-assets
   - composer dump-translation
   - composer build-assets
-  - composer create-test-schema
+  - php bin/console doctrine:schema:update --force
+  - php bin/console doctrine:schema:update --force --env=test
   - php bin/console doctrine:migrations:migrate --env=test -n
+  - php bin/console doctrine:migrations:migrate  -n
   - php bin/console doctrine:fixtures:load --no-interaction --env=test
+  - php bin/console doctrine:fixtures:load --no-interaction

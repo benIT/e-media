@@ -58,7 +58,10 @@
     ],
     "post-install-cmd": [
       "@symfony-scripts",
-      "@create-data-dir"
+      "@create-data-dir",
+      "@dump-translation",
+      "php bin/console doctrine:schema:update --force",
+      "@fixtures-dev"
     ],
     "post-update-cmd": [
       "@symfony-scripts"
