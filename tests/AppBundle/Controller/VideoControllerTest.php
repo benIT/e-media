@@ -21,6 +21,8 @@ class VideoControllerTest extends WebTestCase
 
     public function testIndex()
     {
+        (new \Symfony\Component\Dotenv\Dotenv())->load(__DIR__.'/../../../.env');
+
         $client = static::createClient();
 
         $route = $client->getKernel()->getContainer()->get('router')->generate('video_index');
