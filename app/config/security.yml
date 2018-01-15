@@ -30,3 +30,4 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/video/, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/stream/, role: IS_AUTHENTICATED_FULLY }
