@@ -22,7 +22,7 @@ security:
             http_basic: ~
 doctrine:
     dbal:
-        host:     '%database_test_host%'
-        dbname:   '%database_test_name%'
-        user:     '%database_test_user%'
-        password: '%database_test_password%'
+        host:     '%env(DB_TEST_HOST)%'
+        dbname:   '%env(DB_TEST_NAME)%'
+        user:     '%env(DB_TEST_USER)%'
+        password: '%env(DB_TEST_PWD)%'

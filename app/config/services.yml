@@ -43,6 +43,6 @@ services:
     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
         public:    false
         arguments:
-#            - 'mysql:host=%database_host%;dbname=%database_name%'
-            - 'pgsql:host=%database_host%;dbname=%database_name%'
-            - { db_username: '%database_user%', db_password: '%database_password%' }
+#            - 'mysql:host=%env(DB_HOST)%;dbname=%env(DB_NAME)%'
+            - 'pgsql:host=%env(DB_HOST)%;dbname=%env(DB_NAME)%'
+            - { db_username: '%env(DB_USER)%', db_password: '%env(DB_PWD)%' }

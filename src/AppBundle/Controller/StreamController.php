@@ -24,11 +24,11 @@ class StreamController extends Controller
     {
         $videoPath = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
         $response = new BinaryFileResponse($videoPath);
-        if (filter_var($this->container->getParameter('use_x_sendfile_mode'), FILTER_VALIDATE_BOOLEAN)) {
+        if (filter_var(getenv('USE_X_SENDFILE_MODE'), FILTER_VALIDATE_BOOLEAN)) {
             $serverSoftware = $request->server->get('SERVER_SOFTWARE');
             //determine header according to server software to serve file faster directly by server instead of using php
             if (preg_match('/nginx/', $serverSoftware)) {
-                if (!$nginxLocationXSendFile = $this->container->getParameter('nginx_location_x_send_file')) {
+                if (!$nginxLocationXSendFile = getenv('NGINX_LOCATION_X_SEND_FILE')) {
                     throw new ParameterNotFoundException('nginx_location_x_send_file');
                 }
                 // slash management in lginx stream location
