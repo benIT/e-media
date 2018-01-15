@@ -1,13 +1,13 @@
-# This file is a "template" of what your parameters.yml file should look like
-# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# this file is a "template" of what your parameters.yml file should look like
+# set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
     app_title: 'e-media video streaming'
     app_short_title: 'e-media video streaming'
-    app_slogan: 'Demonstration application'
+    app_slogan: 'demonstration application'
     app_locale: fr
     app_number_video_homepage: 6
-    app_about: 'Welcome to this app. e-media video streaming'
+    app_about: 'welcome to this app. e-media video streaming'
     database_test_host: 127.0.0.1
     database_test_port: null
     database_test_name: emediatest
@@ -23,3 +23,4 @@ parameters:
     database_port: '%env(DB_PORT)%'
     database_user: '%env(DB_USER)%'
     database_password: '%env(DB_PWD)%'
+    use_x_sendfile_mode: '%env(USE_X_SENDFILE_MODE)%'
