@@ -23,18 +23,19 @@ class StreamController extends Controller
     {
         $videoPath = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
         $response = new BinaryFileResponse($videoPath);
-
-        $serverSoftware = $request->server->get('SERVER_SOFTWARE');
-        //determine header according to server software to serve file faster directly by server instead of using php
-        if (preg_match('/nginx/', $serverSoftware)) {
-            $response->headers->set('X-Accel-Redirect', '/stream-files/video/' . basename($videoPath));
-        } elseif (preg_match('/apache/', $serverSoftware)) {
-            $response->headers->set('X-Sendfile', $videoPath);
-        } else {
-            throw  new \Exception(sprintf('server "%s" not supported', $serverSoftware));
+        if (filter_var($this->container->getParameter('use_x_sendfile_mode'), FILTER_VALIDATE_BOOLEAN)) {
+            $serverSoftware = $request->server->get('SERVER_SOFTWARE');
+            //determine header according to server software to serve file faster directly by server instead of using php
+            if (preg_match('/nginx/', $serverSoftware)) {
+                $response->headers->set('X-Accel-Redirect', '/stream-files/video/' . basename($videoPath));
+            } elseif (preg_match('/apache/', $serverSoftware)) {
+                $response->headers->set('X-Sendfile', $videoPath);
+            } else {
+                throw  new \Exception(sprintf('server "%s" not supported', $serverSoftware));
+            }
+            $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_INLINE, basename($videoPath));
+            BinaryFileResponse::trustXSendfileTypeHeader();
         }
-        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, basename($videoPath));
-        BinaryFileResponse::trustXSendfileTypeHeader();
         return $response;
     }
 }

@@ -36,7 +36,8 @@ Create a vhost in `/etc/nginx/sites-available/emedia`:
             internal;
         }
     
-        #used: to stream file directly by the server using 'X-Accel'
+        #used: to stream file directly by the server using 'X-Accel': 
+        #see: https://github.com/benIT/e-media/wiki/Webserver
         location /stream-files {
             alias /vagrant/sites/e-media-data;
             internal;
