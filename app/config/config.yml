@@ -55,8 +55,8 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-#        driver: pdo_mysql
-        driver: pdo_pgsql
+        driver: pdo_mysql
+#        driver: pdo_pgsql
         host: '%env(DB_HOST)%'
         port: '%env(DB_PORT)%'
         dbname: '%env(DB_NAME)%'

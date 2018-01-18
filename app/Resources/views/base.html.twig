@@ -29,7 +29,7 @@
                 <li role="presentation"><a data-toggle="modal" data-target="#myModal" href="#">{% trans %}about.button{% endtrans %}</a></li>
                 <li role="presentation">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                        <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logged_in_as'|trans({'%username%': app.user.firstName~' '~app.user.lastName}, 'FOSUserBundle') }} |
                             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                         </a>
                     {% else %}

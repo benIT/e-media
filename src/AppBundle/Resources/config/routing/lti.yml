@@ -1,0 +1,4 @@
+elti_index:
+    path:     /{id}
+    defaults: { _controller: "AppBundle:Lti:index" }
+    methods:  [GET, POST]

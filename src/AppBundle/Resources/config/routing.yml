@@ -12,3 +12,6 @@ app_tag:
 app_stream:
         resource: "@AppBundle/Resources/config/routing/stream.yml"
         prefix:   /stream
+app_lti:
+        resource: "@AppBundle/Resources/config/routing/lti.yml"
+        prefix:   /lti

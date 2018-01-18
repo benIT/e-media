@@ -43,6 +43,12 @@ services:
     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
         public:    false
         arguments:
-#            - 'mysql:host=%env(DB_HOST)%;dbname=%env(DB_NAME)%'
-            - 'pgsql:host=%env(DB_HOST)%;dbname=%env(DB_NAME)%'
+            - 'mysql:host=%env(DB_HOST)%;dbname=%env(DB_NAME)%'
+#            - 'pgsql:host=%env(DB_HOST)%;dbname=%env(DB_NAME)%'
             - { db_username: '%env(DB_USER)%', db_password: '%env(DB_PWD)%' }
+
+    app.lti.provider:
+        public: true
+        class: AppBundle\Services\LtiToolProvider
+        arguments:
+            - '@fos_user.user_manager.default'
