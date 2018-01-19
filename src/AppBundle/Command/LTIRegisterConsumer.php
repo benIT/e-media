@@ -70,7 +70,7 @@ class LTIRegisterConsumer extends Command
         if (!$helper->ask($input, $output, $question)) {
             return;
         }
-        $dsn = sprintf('mysql:host=%s;dbname=%s', getenv('DB_HOST'), getenv('DB_NAME'));
+        $dsn = sprintf('%s:host=%s;dbname=%s', getenv('DB_TYPE'), getenv('DB_HOST'), getenv('DB_NAME'));
         $db = new \PDO($dsn, getenv('DB_USER'), getenv('DB_PWD'));
         $dataConnector = DataConnector\DataConnector::getDataConnector('', $db);
         $consumer = new ToolProvider\ToolConsumer($consumerKey, $dataConnector);
@@ -78,7 +78,13 @@ class LTIRegisterConsumer extends Command
         $consumer->secret = $consumerSecret;
         $consumer->enabled = TRUE;
         $consumer->save();
-        $output->writeln('Your consumer app has been created!');
-
+        $sth = $db->prepare('SELECT * FROM lti2_consumer WHERE consumer_key256=:consumerKey');
+        $sth->execute(['consumerKey' => $consumerKey]);
+        $result = $sth->fetchAll();
+        if (!count($result)) {
+            throw new \ErrorException('your consumer app has not been created!');
+        } else {
+            $output->writeln('Your consumer app has been created!');
+        }
     }
 }

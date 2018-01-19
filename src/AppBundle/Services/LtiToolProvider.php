@@ -47,7 +47,7 @@ class LtiToolProvider extends ToolProvider\ToolProvider
     public function __construct(UserManager $userManager, TokenStorage $tokenStorage, Session $session, TraceableEventDispatcher $eventDispatcher)
     {
 
-        $dsn = sprintf('mysql:host=%s;dbname=%s', getenv('DB_HOST'), getenv('DB_NAME'));
+        $dsn = sprintf('%s:host=%s;dbname=%s', getenv('DB_TYPE'), getenv('DB_HOST'), getenv('DB_NAME'));
         $db = new \PDO($dsn, getenv('DB_USER'), getenv('DB_PWD'));
         $dataConnector = DataConnector\DataConnector::getDataConnector('', $db);
         parent::__construct($dataConnector);
