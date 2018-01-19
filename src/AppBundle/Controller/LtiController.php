@@ -22,7 +22,7 @@ class LtiController extends Controller
      * @param Video $video
      * @return RedirectResponse
      */
-    public function indexAction(Request $request, Video $video)
+    public function showAction(Request $request, Video $video)
     {
         $ltiToolProvider = $this->get('app.lti.provider');
         $ltiToolProvider->setRequest($request);

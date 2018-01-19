@@ -73,3 +73,8 @@ ul.form-error {
 .vjs-paused .vjs-big-play-button {
     display: none;
 }
+
+.img-centered {
+    margin: auto;
+    display: block;
+}

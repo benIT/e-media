@@ -1,4 +1,4 @@
-elti_index:
+lti_show:
     path:     /{id}
-    defaults: { _controller: "AppBundle:Lti:index" }
+    defaults: { _controller: "AppBundle:Lti:show" }
     methods:  [GET, POST]

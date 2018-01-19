@@ -23,3 +23,6 @@ form_create:
 search:
   title: Rechercher une vidéo
   button: Rechercher
+share:
+  emedia: Lien de partage sur e-media
+  lti: Lien de partage avec un LMS (moodle, blackboard...)

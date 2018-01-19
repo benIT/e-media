@@ -40,8 +40,11 @@
                 <div class="modal-body">
                     <div>
                         {% set videoLink =   absolute_url(path('video_stream',{'id':video.id})) %}
-                        <a href="{{ videoLink }}">{{ videoLink }}</a> <br>
-                        <img src="{{ qrcode_data_uri(videoLink, { writer: 'svg', size: 150 }) }}"/>
+                        {% trans from "video" %}share.emedia{% endtrans %} : <a href="{{ videoLink }}">{{ videoLink }}</a> <br>
+                        <img class='img-centered' src="{{ qrcode_data_uri(videoLink, { writer: 'svg', size: 150 }) }}"/><br>
+                        {% set videoLinkLti =   absolute_url(path('lti_show',{'id':video.id})) %}
+                        {% trans from "video" %}share.lti{% endtrans %} : <a href="{{ videoLinkLti }}">{{ videoLinkLti }}</a> <br>
+                        <img class='img-centered' src="{{ qrcode_data_uri(videoLinkLti, { writer: 'svg', size: 150 }) }}"/><br>
                     </div>
 
                 </div>
