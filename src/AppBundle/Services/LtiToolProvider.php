@@ -57,6 +57,7 @@ class LtiToolProvider extends ToolProvider\ToolProvider
         $this->eventDispatcher = $eventDispatcher;
     }
 
+    //todo: role mapping between e-media and LMS
     function onLaunch()
     {
         if (!$userName = $_POST['user_id']) {
