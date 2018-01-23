@@ -5,8 +5,8 @@ namespace AppBundle\Services;
 use FOS\UserBundle\Doctrine\UserManager;
 use IMSGlobal\LTI\ToolProvider;
 use IMSGlobal\LTI\ToolProvider\DataConnector;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -44,7 +44,7 @@ class LtiToolProvider extends ToolProvider\ToolProvider
         $this->request = $request;
     }
 
-    public function __construct(UserManager $userManager, TokenStorage $tokenStorage, Session $session, TraceableEventDispatcher $eventDispatcher)
+    public function __construct(UserManager $userManager, TokenStorage $tokenStorage, Session $session, EventDispatcher $eventDispatcher)
     {
 
         $dsn = sprintf('%s:host=%s;dbname=%s', getenv('DB_TYPE'), getenv('DB_HOST'), getenv('DB_NAME'));
