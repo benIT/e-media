@@ -1,7 +1,8 @@
 vich_uploader:
     db_driver: orm
     mappings:
-        video_mapping:
+        video_file:
             uri_prefix:         /video/
             upload_destination: '%kernel.root_dir%/../web/e-media-data/video/'
+            directory_namer: app.vich.subdiruniqdirectorynamer
             namer: vich_uploader.namer_uniqid

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "video" %}
+{% block body %}
+    <h2>{% trans from "video" %}form_create.upload{% endtrans %}</h2>
+
+    {{ form_start(form) }}
+
+    <div class="form-group">
+        <label class="custom-file">
+            {{ form_widget(form.videoFile, {'attr': {'class': 'custom-file-input'}}) }}
+            <span class="custom-file-control"></span>
+        </label>
+        {{ form_errors(form.videoFile) }}
+    </div>
+
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="{% trans from "common"%}save{% endtrans %}"/>
+    </div>
+    {{ form_end(form) }}
+
+    <a class="" href="{{ path('video_index') }}">{% trans from "common" %}back{% endtrans %}</a>
+{% endblock %}

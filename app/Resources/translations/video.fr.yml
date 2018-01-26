@@ -20,6 +20,7 @@ form_create:
   categories: Categories
   submit: Enregistrer
   create_category: Créer une nouvelle catégorie
+  upload: Téléverser la vidéo
 search:
   title: Rechercher une vidéo
   button: Rechercher

@@ -1,16 +1,28 @@
 {% extends 'base.html.twig' %}
-
+{% trans_default_domain "video" %}
 {% block body %}
-    <h2>Video creation</h2>
-
+    <h2>{{ title }}</h2>
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    <div class="form-group">
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.title) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.description) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.tags) }}
+        {{ form_widget(form.tags, {'attr': {'class': 'form-control chosen-select'}}) }}
+        {{ form_errors(form.tags) }}
+        <a href="{{ path('tag_new') }}">{% trans %}form_create.create_category{% endtrans %}</a>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="{% trans from "common"%}save{% endtrans %}"/>
+    </div>
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('video_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <a class="" href="{{ path('video_index') }}">{% trans from "common" %}back{% endtrans %}</a>
 {% endblock %}

@@ -34,6 +34,14 @@ class Video
 
     private $creator;
 
+    const STATUS_VIDEO_DRAFT = 0; //no video file yet
+
+    const STATUS_VIDEO_UPLOADED = 1; //video has been uploaded
+
+    const STATUS_VIDEO_ENCODING = 2; //video is being encoded by encoder
+
+    const STATUS_VIDEO_ENCODED = 3; //video is encoded and ready to be served
+
     /**
      * @return ArrayCollection
      */
@@ -180,6 +188,7 @@ class Video
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->setUpdatedAt(new \DateTime());
     }
 
     /**

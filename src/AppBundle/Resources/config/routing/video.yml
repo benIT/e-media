@@ -13,6 +13,11 @@ video_new:
     defaults: { _controller: "AppBundle:Video:new" }
     methods:  [GET, POST]
 
+video_upload:
+    path:     /{id}/upload
+    defaults: { _controller: "AppBundle:Video:uploadVideo" }
+    methods:  [GET, POST]
+
 video_edit:
     path:     /{id}/edit
     defaults: { _controller: "AppBundle:Video:edit" }

@@ -19,6 +19,9 @@ AppBundle\Entity\Video:
             type: string
             length: 255
             nullable: true
+        updatedAt:
+            type: datetime
+
     manyToMany:
       tags:
         targetEntity: AppBundle\Entity\Tag

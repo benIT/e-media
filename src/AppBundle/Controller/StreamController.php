@@ -34,8 +34,7 @@ class StreamController extends Controller
                 // slash management in lginx stream location
                 $nginxLocationXSendFile = substr($nginxLocationXSendFile, -1) === '/' ? $nginxLocationXSendFile : $nginxLocationXSendFile . '/';
                 $nginxLocationXSendFile = substr($nginxLocationXSendFile, 0, 1) === '/' ? $nginxLocationXSendFile : '/' . $nginxLocationXSendFile;
-
-                $response->headers->set('X-Accel-Redirect', $nginxLocationXSendFile . 'video/' . basename($videoPath));
+                $response->headers->set('X-Accel-Redirect', $nginxLocationXSendFile . 'video/' . basename(pathinfo($videoPath)['dirname']) . '/' . pathinfo($videoPath)['basename']);
             } elseif (preg_match('/apache/', $serverSoftware)) {
                 $response->headers->set('X-Sendfile', $videoPath);
             } else {

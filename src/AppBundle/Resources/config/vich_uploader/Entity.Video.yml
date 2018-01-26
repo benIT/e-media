@@ -1,4 +1,4 @@
 AppBundle\Entity\Video:
     videoFile:
-        mapping: video_mapping
+        mapping: video_file
         filename_property: videoName

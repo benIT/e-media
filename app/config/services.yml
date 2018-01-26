@@ -51,3 +51,7 @@ services:
         class: AppBundle\Services\LtiToolProvider
         arguments:
             - '@fos_user.user_manager.default'
+
+    app.vich.subdiruniqdirectorynamer:
+        public: true
+        class: AppBundle\Services\SubdirUniqDirectoryNamer
