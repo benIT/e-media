@@ -27,11 +27,7 @@ class VideoFixtures extends Fixture
             $video = new Video();
             $video->setTitle($videoData['title']);
             $video->setDescription($videoData['title']);
-            $filePath = __DIR__.'/../Data/test.mp4';
-            $fileName = \filter_var($videoData['title'], FILTER_SANITIZE_EMAIL);
-            $targetfilePath = __DIR__.'/../Data/'.$fileName.'mp4';
-            $fs->copy($filePath, $targetfilePath);
-            $video->setVideoFile(new UploadedFile($targetfilePath, 'test.mp4', 'video/mp4', null, null, true));
+            $filePath = __DIR__ . '/../Data/test.mp4';
             $video->setCreator($this->getReference($users[array_rand($users)]['firstName']));
             for ($i = 0; $i < rand(1, self::MAX_TAG); ++$i) {
                 $tag = $this->getReference(TagFixturesData::$data[array_rand(TagFixturesData::$data)]['name']);
@@ -39,7 +35,13 @@ class VideoFixtures extends Fixture
                     $video->addTag($tag);
                 }
             }
-
+            $manager->persist($video);
+            $manager->flush(); // video storage strategy is based on subdirectory video id, so video must be persisted te get an id
+            $fileName = \filter_var($videoData['title'], FILTER_SANITIZE_EMAIL);
+            $targetfilePath = __DIR__ . '/../Data/' . $fileName . 'mp4';
+            $fs->copy($filePath, $targetfilePath);
+            $video->setVideoFile(new UploadedFile($targetfilePath, 'test.mp4', 'video/mp4', null, null, true));
+            $video->setUpdatedAt(new \DateTime());
             $manager->persist($video);
         }
         $manager->flush();

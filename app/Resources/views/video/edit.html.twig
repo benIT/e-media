@@ -2,13 +2,11 @@
 {% trans_default_domain "video" %}
 {% block body %}
     <h2>{{ title }}</h2>
-
     {{ form_start(form) }}
     <div class="form-group">
         {{ form_label(form.title) }}
         {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
         {{ form_errors(form.title) }}
-
     </div>
     <div class="form-group">
         {{ form_label(form.description) }}
@@ -16,22 +14,23 @@
         {{ form_errors(form.description) }}
     </div>
     <div class="form-group">
-        <label class="custom-file">
-            {#<input type="file" id="file" class="custom-file-input">#}
-            {{ form_widget(form.videoFile, {'attr': {'class': 'custom-file-input'}}) }}
-            <span class="custom-file-control"></span>
-        </label>
-        {{ form_errors(form.videoFile) }}
-    </div>
-
-    <div class="form-group">
         {{ form_label(form.tags) }}
         {{ form_widget(form.tags, {'attr': {'class': 'form-control chosen-select'}}) }}
         {{ form_errors(form.tags) }}
         <a href="{{ path('tag_new') }}">{% trans %}form_create.create_category{% endtrans %}</a>
     </div>
+
+    {% if form.videoFile is defined %}
+        <div class="form-group">
+            <label class="custom-file">
+                {{ form_widget(form.videoFile, {'attr': {'class': 'custom-file-input'}}) }}
+                <span class="custom-file-control"></span>
+            </label>
+            {{ form_errors(form.videoFile) }}
+        </div>
+    {% endif %}
     <div class="form-group">
-        <input class="btn btn-primary" type="submit" value="{% trans from "common"%}save{% endtrans %}"/>
+        <input class="btn btn-primary" type="submit" value="{% trans from "common" %}save{% endtrans %}"/>
     </div>
     {{ form_end(form) }}
 

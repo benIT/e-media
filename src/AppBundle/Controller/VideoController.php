@@ -43,10 +43,31 @@ class VideoController extends Controller
             $em->flush();
             $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
 
-            return $this->redirectToRoute('video_show', array('id' => $video->getId()));
+            return $this->redirectToRoute('video_upload', array('id' => $video->getId()));
         }
 
         return $this->render('video/edit.html.twig', array(
+            'title' => $this->get('translator')->trans('form_create.create', [], 'video'),
+            'video' => $video,
+            'form' => $form->createView(),
+        ));
+    }
+
+    public function uploadVideoAction(Request $request, Video $video)
+    {
+        $form = $this->createForm('AppBundle\Form\VideoFileType', $video);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $video->setUpdatedAt(new \DateTime());
+            $em->persist($video);
+            $em->flush();
+            $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
+
+            return $this->redirectToRoute('video_show', array('id' => $video->getId()));
+        }
+        return $this->render('video/upload.html.twig', array(
             'title' => $this->get('translator')->trans('form_create.create', [], 'video'),
             'video' => $video,
             'form' => $form->createView(),
@@ -71,14 +92,16 @@ class VideoController extends Controller
      */
     public function editAction(Request $request, Video $video)
     {
-        $editForm = $this->createForm('AppBundle\Form\VideoType', $video, ['action_type' => 'update']);
+        $editForm = $this->createForm('AppBundle\Form\VideoType', $video, ['action_type' => 'edit']);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $video->setUpdatedAt(new \DateTime());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($video);
+            $em->flush();
             $this->flashMessage(ControllerUtilsTrait::$flashSuccess);
-
-            return $this->redirectToRoute('video_index');
+            return $this->redirectToRoute('video_show', ['id' => $video->getId()]);
         }
 
         return $this->render('video/edit.html.twig', array(

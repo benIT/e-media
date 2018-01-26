@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class UserFixtures extends Fixture implements ContainerAwareInterface
 {
-    const LIMIT = 20;
+    const LIMIT = 2;
 
     private $container;
 

@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new Oneup\FlysystemBundle\OneupFlysystemBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
