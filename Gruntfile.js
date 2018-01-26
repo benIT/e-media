@@ -94,7 +94,8 @@ module.exports = function (grunt) {
                     'node_modules/chosen-js/chosen.jquery.min.js',
                     'node_modules/videosjs-assets/dist/video.min.js',
                     'node_modules/slabText/js/jquery.slabtext.js',
-                    'vendor/willdurand/js-translation-bundle/Resources/public/js/translator.min.js'
+                    'vendor/willdurand/js-translation-bundle/Resources/public/js/translator.min.js',
+                    'node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js'
 
                 ],
                 dest: 'web/assets/dist/js/vendors.min.js'

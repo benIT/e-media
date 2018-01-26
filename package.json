@@ -22,11 +22,15 @@
     "jquery": "^3.2.1",
     "load-grunt-tasks": "^0.6.0",
     "slabText": "freqdec/slabText#^2.2.0",
+    "videojs-contrib-hls": "^5.12.2",
     "videosjs-assets": "benIT/videosjs-assets"
   },
   "scripts": {
     "postinstall": "node_modules/grunt-cli/bin/grunt"
   },
   "main": "index.js",
-  "repository": "git@github.com:benIT/e-media.git"
+  "repository": "git@github.com:benIT/e-media.git",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
 }

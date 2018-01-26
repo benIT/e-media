@@ -3,8 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Video;
+use AppBundle\Exception\VideoNotEncodedException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -44,5 +46,48 @@ class StreamController extends Controller
             BinaryFileResponse::trustXSendfileTypeHeader();
         }
         return $response;
+    }
+
+
+    /**
+     * secure the HLS m3u8 and segment download
+     * @param Request $request
+     * @param Video $video
+     * @param $file
+     * @return BinaryFileResponse
+     */
+    public function downloadHlsPlaylistFileAction(Request $request, Video $video, $file)
+    {
+        $videoPath = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
+        $filePath = pathinfo($videoPath)['dirname'] . '/' . $file;
+        $response = new BinaryFileResponse($filePath);
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_INLINE, basename($filePath));
+        return $response;
+    }
+
+    /**
+     * Http Live Streaming
+     * @see https://en.wikipedia.org/wiki/HTTP_Live_Streaming
+     * @param Request $request
+     * @param Video $video
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function HlsAction(Request $request, Video $video)
+    {
+
+        $videoPath = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
+        $fs = new Filesystem();
+        $playlistFile = getenv('HLS_PLAYLIST_NAME');
+        $playlistFileLocation = pathinfo($videoPath)['dirname'] . '/' . $playlistFile;
+
+        if (!$fs->exists($playlistFileLocation)) {
+            throw new VideoNotEncodedException(sprintf('Sorry, but there is no %s file found for this video', $playlistFile));
+        }
+
+
+        return $this->render('stream/hls.html.twig', array(
+            'video' => $video,
+            'playlistFileLocation' => $playlistFileLocation,
+        ));
     }
 }

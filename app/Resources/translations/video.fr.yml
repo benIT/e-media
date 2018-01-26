@@ -26,4 +26,5 @@ search:
   button: Rechercher
 share:
   emedia: Lien de partage sur e-media
+  hls: Lien de partage Http Live Streaming
   lti: Lien de partage avec un LMS (moodle, blackboard...)

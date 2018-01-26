@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "video" %}
+{% block body %}
+    <h2>{{ video.title }}</h2>
+    <div class="row marketing">
+    <div style="background-color: #eceeef;border-radius: 3px; padding: 20px" class="col-lg-12">
+        <p class="lead"> {{ video.description }}</p>
+        <video id=example-video width=960 height=540 class="video-js vjs-default-skin" controls>
+            <source
+                    src="{{ absolute_url(path('video_hls_download_playlist_file',{'id':video.id,'file': 'index.m3u8'} ))}}"
+                    type="application/x-mpegURL">
+        </video>
+    </div>
+    <a class="btn btn-primary" href="{{ path('video_index') }}">{% trans from "common" %}back{% endtrans %}</a>
+
+{% endblock %}
+{% block javascripts%}
+        <script>
+            var player = videojs('example-video');
+            player.play()
+        </script>
+{% endblock %}
