@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Video;
+use AppBundle\Exception\VideoEncodingErrorException;
+use AppBundle\Exception\VideoEncodingPendingException;
 use AppBundle\Exception\VideoNotEncodedException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
@@ -79,7 +81,15 @@ class StreamController extends Controller
         $fs = new Filesystem();
         $playlistFile = getenv('HLS_PLAYLIST_NAME');
         $playlistFileLocation = pathinfo($videoPath)['dirname'] . '/' . $playlistFile;
+        $errorFileLocation = pathinfo($videoPath)['dirname'] . '/' . 'error';
+        $lockFileLocation = pathinfo($videoPath)['dirname'] . '/' . 'lock';
 
+        if ($fs->exists($errorFileLocation)) {
+            throw new VideoEncodingErrorException();
+        }
+        if ($fs->exists($lockFileLocation)) {
+            throw new VideoEncodingPendingException();
+        }
         if (!$fs->exists($playlistFileLocation)) {
             throw new VideoNotEncodedException(sprintf('Sorry, but there is no %s file found for this video', $playlistFile));
         }

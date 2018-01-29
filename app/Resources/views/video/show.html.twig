@@ -24,6 +24,7 @@
             {% trans %} index.created_by{% endtrans %} : <a href="{{ path('user_show',{'id':video.creator.id}) }}">{{ video.creator }}</a>
         </div>
 
+        <a href="{{ path('video_edit',{'id': video.id}) }}">{% trans from "common" %}update{% endtrans %}</a> -
         <a data-toggle="modal" data-target="#modal-share-video" href="#">{% trans from "common" %}share{% endtrans %}</a>
 
     </div>
