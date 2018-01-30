@@ -25,6 +25,6 @@ search:
   title: Rechercher une vidéo
   button: Rechercher
 share:
-  emedia: Lien de partage sur e-media
+  download: Lien de téléchargemet sur e-media
   hls: Lien de partage Http Live Streaming
   lti: Lien de partage avec un LMS (moodle, blackboard...)

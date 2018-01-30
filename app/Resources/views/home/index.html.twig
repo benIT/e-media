@@ -14,7 +14,7 @@
                         <video id="my-video" class="video-js" controls preload="none" width="200px"
                                poster="{{ asset('assets/dist/image/video-poster.png') }}"
                                data-setup="{}">
-                            <source src="{{ path('video_stream',{'id':video.id}) }}" type='video/mp4'>
+                            <source src="{{ path('video_download',{'id':video.id}) }}" type='video/mp4'>
                             {#<source src="MY_VIDEO.webm" type='video/webm'>#}
                             <p class="vjs-no-js">
                                 To view this video please enable JavaScript, and consider upgrading to a web browser that

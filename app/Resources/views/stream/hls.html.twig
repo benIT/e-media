@@ -5,18 +5,25 @@
     <div class="row marketing">
     <div style="background-color: #eceeef;border-radius: 3px; padding: 20px" class="col-lg-12">
         <p class="lead"> {{ video.description }}</p>
-        <video id=example-video  width="640" height="264" class="video-js vjs-default-skin" controls>
-            <source
-                    src="{{ absolute_url(path('video_hls_download_playlist_file',{'id':video.id,'file': 'index.m3u8'} ))}}"
-                    type="application/x-mpegURL">
-        </video>
+        {% if not error %}
+            <video id=example-video  width="640" height="264" class="video-js vjs-default-skin" controls>
+                <source
+                        src="{{ absolute_url(path('video_hls_download_playlist_file',{'id':video.id,'file': 'index.m3u8'} ))}}"
+                        type="application/x-mpegURL">
+            </video>
+        {% else %}
+            <img class="img-centered" src="{{ asset('assets/dist/image/tv-broken.png') }}" width="250px" alt="">
+        {% endif %}
     </div>
     <a class="btn btn-primary" href="{{ path('video_index') }}">{% trans from "common" %}back{% endtrans %}</a>
-
 {% endblock %}
 {% block javascripts%}
         <script>
+         {% if not error %}
             var player = videojs('example-video');
-            player.play()
+            player.play();
+        {% else %}
+            setTimeout(function() { window.location=window.location;},10000);
+        {% endif %}
         </script>
 {% endblock %}

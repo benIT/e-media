@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class StreamController extends Controller
 {
+    use ControllerUtilsTrait;
+
     /**
      * @see https://symfony.com/doc/current/components/http_foundation.html#serving-files
      * @see apache mod_xsendfile: https://tn123.org/mod_xsendfile/
@@ -24,11 +26,12 @@ class StreamController extends Controller
      * @return BinaryFileResponse
      * @throws \Exception
      */
-    public function streamAction(Request $request, Video $video)
+    public function downloadAction(Request $request, Video $video)
     {
         $videoPath = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
         $response = new BinaryFileResponse($videoPath);
         if (filter_var(getenv('USE_X_SENDFILE_MODE'), FILTER_VALIDATE_BOOLEAN)) {
+            BinaryFileResponse::trustXSendfileTypeHeader();
             $serverSoftware = $request->server->get('SERVER_SOFTWARE');
             //determine header according to server software to serve file faster directly by server instead of using php
             if (preg_match('/nginx/', $serverSoftware)) {
@@ -45,7 +48,6 @@ class StreamController extends Controller
                 throw  new \Exception(sprintf('server "%s" not supported', $serverSoftware));
             }
             $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_INLINE, basename($videoPath));
-            BinaryFileResponse::trustXSendfileTypeHeader();
         }
         return $response;
     }
@@ -83,19 +85,22 @@ class StreamController extends Controller
         $playlistFileLocation = pathinfo($videoPath)['dirname'] . '/' . $playlistFile;
         $errorFileLocation = pathinfo($videoPath)['dirname'] . '/' . 'error';
         $lockFileLocation = pathinfo($videoPath)['dirname'] . '/' . 'lock';
+        $error = false;
 
         if ($fs->exists($errorFileLocation)) {
-            throw new VideoEncodingErrorException();
-        }
-        if ($fs->exists($lockFileLocation)) {
-            throw new VideoEncodingPendingException();
-        }
-        if (!$fs->exists($playlistFileLocation)) {
-            throw new VideoNotEncodedException(sprintf('Sorry, but there is no %s file found for this video', $playlistFile));
+            $error = $this->get('translator')->trans('encoding.error', [], 'stream');
+            $this->flashMessage(ControllerUtilsTrait::$flashDanger, $error);
+        }elseif ($fs->exists($lockFileLocation)) {
+            $error = $this->get('translator')->trans('encoding.pending', [], 'stream');
+            $this->flashMessage(ControllerUtilsTrait::$flashInfo, $error);
+        }elseif(!$fs->exists($playlistFileLocation)) {
+            $error = $this->get('translator')->trans('encoding.no-playlist', [], 'stream');
+            $this->flashMessage(ControllerUtilsTrait::$flashDanger, $error);
         }
 
 
         return $this->render('stream/hls.html.twig', array(
+            'error' => $error,
             'video' => $video,
             'playlistFileLocation' => $playlistFileLocation,
         ));
