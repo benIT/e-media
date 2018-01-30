@@ -27,6 +27,7 @@ class VideoType extends AbstractType
 
         if ($options['action_type'] === 'edit') {
             $builder->add('videoFile', VichFileType::class, [
+                'download_link' => false,
                 'allow_delete' => false,
                 'required' => false,
                 'label' => 'form_create.file',

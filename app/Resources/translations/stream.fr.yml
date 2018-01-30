@@ -1,0 +1,4 @@
+encoding:
+  error: Une erreur d'encodage est survenue
+  pending: Votre vidéo est en cours d'encodage... patientez quelques instants
+  no-playlist: Une erreur d'encodage est survenue. Impossible de trouver la liste de lecture

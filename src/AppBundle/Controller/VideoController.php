@@ -20,7 +20,7 @@ class VideoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $videos = $em->getRepository('AppBundle:Video')->findAll();
+        $videos = $em->getRepository('AppBundle:Video')->findLatest();
 
         return $this->render('video/index.html.twig', array(
             'videos' => $videos,
@@ -162,7 +162,6 @@ class VideoController extends Controller
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('video_delete', array('id' => $video->getId())))
-//            ->setMethod('DELETE')
             ->getForm();
     }
 }

@@ -16,13 +16,15 @@ use Doctrine\ORM\QueryBuilder;
  */
 class VideoRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findLatest($nth)
+    public function findLatest($nth = null)
     {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT v FROM AppBundle:Video v ORDER BY v.id DESC'
-            )
-            ->setMaxResults($nth)->getResult();
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT v FROM AppBundle:Video v ORDER BY v.updatedAt DESC'
+        );
+        if ($nth) {
+            $query->setMaxResults($nth);
+        }
+        return $query->getResult();
     }
 
     /**
@@ -55,7 +57,7 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
      * add filter on title field.
      *
      * @param QueryBuilder $qb
-     * @param string       $title
+     * @param string $title
      *
      * @return QueryBuilder
      */
@@ -70,7 +72,7 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
     /**
      * add filter on tags field.
      *
-     * @param QueryBuilder    $qb
+     * @param QueryBuilder $qb
      * @param ArrayCollection $tags
      *
      * @return QueryBuilder

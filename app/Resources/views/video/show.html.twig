@@ -8,7 +8,7 @@
             <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
                    poster="{{ asset('assets/dist/image/video-poster.png') }}"
                    data-setup="{}">
-                <source src="{{ path('video_stream',{'id':video.id}) }}" type='video/mp4'>
+                <source src="{{ path('video_download',{'id':video.id}) }}" type='video/mp4'>
                 {#<source src="MY_VIDEO.webm" type='video/webm'>#}
                 <p class="vjs-no-js">
                     To view this video please enable JavaScript, and consider upgrading to a web browser that
@@ -24,6 +24,7 @@
             {% trans %} index.created_by{% endtrans %} : <a href="{{ path('user_show',{'id':video.creator.id}) }}">{{ video.creator }}</a>
         </div>
 
+        <a href="{{ path('video_edit',{'id': video.id}) }}">{% trans from "common" %}update{% endtrans %}</a> -
         <a data-toggle="modal" data-target="#modal-share-video" href="#">{% trans from "common" %}share{% endtrans %}</a>
 
     </div>
@@ -39,8 +40,11 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                        {% set videoLink =   absolute_url(path('video_stream',{'id':video.id})) %}
-                        {% trans from "video" %}share.emedia{% endtrans %} : <a href="{{ videoLink }}">{{ videoLink }}</a> <br>
+                        {% set videoLink =   absolute_url(path('video_download',{'id':video.id})) %}
+                        {% trans from "video" %}share.download{% endtrans %} : <a href="{{ videoLink }}">{{ videoLink }}</a> <br>
+                        <img class='img-centered' src="{{ qrcode_data_uri(videoLink, { writer: 'svg', size: 150 }) }}"/><br>
+                        {% set videoLinkHls =   absolute_url(path('video_hls',{'id':video.id})) %}
+                        {% trans from "video" %}share.hls{% endtrans %} : <a href="{{ videoLinkHls }}">{{ videoLinkHls }}</a> <br>
                         <img class='img-centered' src="{{ qrcode_data_uri(videoLink, { writer: 'svg', size: 150 }) }}"/><br>
                         {% set videoLinkLti =   absolute_url(path('lti_show',{'id':video.id})) %}
                         {% trans from "video" %}share.lti{% endtrans %} : <a href="{{ videoLinkLti }}">{{ videoLinkLti }}</a> <br>
