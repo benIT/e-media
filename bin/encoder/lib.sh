@@ -1,4 +1,15 @@
 #!/bin/bash
+
+##################################################################
+#Variables
+##################################################################
+MONITORDIR="/vagrant/shared/e-media/web/e-media-data/video"
+LOGFILE='var/logs/encoder.log'
+declare -a VIDEO_EXTENSION=("mp4" "flv" "mkv");
+
+##################################################################
+#Functions
+##################################################################
 in_array() {
     local haystack=${1}[@]
     local needle=${2}
@@ -17,5 +28,5 @@ readonly LEVEL_ERROR='ERROR'
 #$1: log level
 #$2: log message
 function log {
-    echo -e "$(date) - $1 - $2" >> var/logs/encoder.log
+    echo -e "$(date) - $1 - $2" >> ${LOGFILE}
 }
