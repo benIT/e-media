@@ -9,9 +9,9 @@
             {% if latestVideos %}
                 <h2><span class="slabtext">{% trans %}lastest_videos{% endtrans %}</span></h2>
                 {% for  video in latestVideos %}
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-4">
                         <em><a href="{{ path('video_show', {'id':video.id}) }}">{{ video.title |slice(0,20)}}</a></em>
-                        <video id="my-video" class="video-js" controls preload="none" width="200px"
+                        <video id="my-video" class="video-js js-default-skin vjs-16-9" controls preload="none" width="200px"
                                poster="{{ asset('assets/dist/image/video-poster.png') }}"
                                data-setup="{}">
                             <source src="{{ path('video_download',{'id':video.id}) }}" type='video/mp4'>

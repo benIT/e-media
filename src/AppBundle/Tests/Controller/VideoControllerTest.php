@@ -9,7 +9,7 @@ class VideoControllerTest extends WebTestCase
     /*
     public function testCompleteScenario()
     {
-        // Create a new client to browse the application
+        // Create a new client to browse the applicationq
         $client = static::createClient();
 
         // Create a new entry in the database
