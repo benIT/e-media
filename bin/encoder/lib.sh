@@ -1,12 +1,5 @@
 #!/bin/bash
-
-##################################################################
-#Variables
-##################################################################
-MONITORDIR="/vagrant/shared/e-media/web/e-media-data/video"
-LOGFILE='var/logs/encoder.log'
-declare -a VIDEO_EXTENSION=("mp4" "flv" "mkv");
-
+source 'bin/encoder/conf.sh'
 ##################################################################
 #Functions
 ##################################################################
@@ -29,4 +22,16 @@ readonly LEVEL_ERROR='ERROR'
 #$2: log message
 function log {
     echo -e "$(date) - $1 - $2" >> ${LOGFILE}
+}
+
+#launch encoding for a directory video
+function launchEncoding(){
+    CURRENTDIR=$1
+    for i in "${VIDEO_EXTENSION[@]}"
+        do
+             ls $CURRENTDIR/*.$i > /dev/null 2>&1
+             if [ $? -eq 0 ]; then
+                bin/encoder/encoder.sh ${CURRENTDIR}/*.$i
+             fi
+        done
 }

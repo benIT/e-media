@@ -9,4 +9,7 @@ do
             bin/encoder/encoder.sh $NEWFILE &
         fi
     fi
+    if [ -d $NEWFILE ]; then
+        launchEncoding $NEWFILE
+    fi
 done

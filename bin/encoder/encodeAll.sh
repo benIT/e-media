@@ -7,21 +7,10 @@
 source 'bin/encoder/lib.sh'
 ENCODE_EXISTING=false
 
-function launchEncoding(){
-    CURRENTDIR=$1
-    for i in "${VIDEO_EXTENSION[@]}"
-        do
-             ls $CURRENTDIR/*.$i > /dev/null 2>&1
-             if [ $? -eq 0 ]; then
-                bin/encoder/encoder.sh ${CURRENTDIR}/*.$i
-             fi
-        done
-}
-
 while getopts ":f" opt; do
   case $opt in
     f)
-      echo "-f was triggered!" >&2
+      echo "all existing videos will be re-encoded." >&2
       ENCODE_EXISTING=true
       ;;
     \?)
