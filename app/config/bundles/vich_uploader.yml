@@ -1,7 +1,33 @@
+oneup_flysystem:
+    adapters:
+        local_adapter:
+            local:
+                directory: '%kernel.root_dir%/../web/e-media-data/video/'
+        sftp_adapter:
+            sftp:
+                host: 192.168.33.14
+                port: ~
+                username: vagrant
+                password: vagrant
+                root: ~
+                timeout: ~
+                privateKey: ~
+                permPrivate: ~
+                permPublic: ~
+                directoryPerm: ~
+    filesystems:
+        local_fs:
+            adapter: local_adapter
+            mount:   local_fs
+        sftp_fs:
+            adapter: sftp_adapter
+            mount:   sftp_fs
+
 vich_uploader:
     db_driver: orm
+    storage:   flysystem
     mappings:
         video_file:
-            upload_destination: '%kernel.root_dir%/../web/e-media-data/video/'
+            upload_destination: sftp_fs
             directory_namer: app.vich.subdiruniqdirectorynamer
             namer: vich_uploader.namer_uniqid
