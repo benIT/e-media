@@ -11,7 +11,10 @@ use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 class StreamController extends Controller
 {
@@ -28,6 +31,20 @@ class StreamController extends Controller
      */
     public function downloadAction(Request $request, Video $video)
     {
+        //todo : WIP
+//        return $this->get('vich_uploader.download_handler')->downloadObject($video,'videoFile');
+//        $stream = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
+        $stream = $this->get('vich_uploader.storage')->resolveStream($video, 'videoFile');
+        $response = new Response();
+        $response->headers->set('Content-Disposition', ResponseHeaderBag::DISPOSITION_ATTACHMENT);
+        $response->headers->set('Content-Type', 'video/mp4');
+        $response->setContent(stream_get_contents($stream));
+        return $response;
+        $response = new StreamedResponse(function () use ($stream) {
+            stream_copy_to_stream($stream, fopen('php://output', 'wb'));
+        });
+
+        return $response;
         $videoPath = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
         $response = new BinaryFileResponse($videoPath);
         if (filter_var(getenv('USE_X_SENDFILE_MODE'), FILTER_VALIDATE_BOOLEAN)) {
@@ -87,16 +104,16 @@ class StreamController extends Controller
         $lockFileLocation = pathinfo($videoPath)['dirname'] . '/' . 'lock';
         $error = false;
 
-        if ($fs->exists($errorFileLocation)) {
-            $error = $this->get('translator')->trans('encoding.error', [], 'stream');
-            $this->flashMessage(ControllerUtilsTrait::$flashDanger, $error);
-        }elseif ($fs->exists($lockFileLocation)) {
-            $error = $this->get('translator')->trans('encoding.pending', [], 'stream');
-            $this->flashMessage(ControllerUtilsTrait::$flashInfo, $error);
-        }elseif(!$fs->exists($playlistFileLocation)) {
-            $error = $this->get('translator')->trans('encoding.no-playlist', [], 'stream');
-            $this->flashMessage(ControllerUtilsTrait::$flashDanger, $error);
-        }
+//        if ($fs->exists($errorFileLocation)) {
+//            $error = $this->get('translator')->trans('encoding.error', [], 'stream');
+//            $this->flashMessage(ControllerUtilsTrait::$flashDanger, $error);
+//        } elseif ($fs->exists($lockFileLocation)) {
+//            $error = $this->get('translator')->trans('encoding.pending', [], 'stream');
+//            $this->flashMessage(ControllerUtilsTrait::$flashInfo, $error);
+//        } elseif (!$fs->exists($playlistFileLocation)) {
+//            $error = $this->get('translator')->trans('encoding.no-playlist', [], 'stream');
+//            $this->flashMessage(ControllerUtilsTrait::$flashDanger, $error);
+//        }
 
 
         return $this->render('stream/hls.html.twig', array(
