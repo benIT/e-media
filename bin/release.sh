@@ -28,6 +28,13 @@ composer test
 php bin/console cache:clear --env=dev
 php bin/console cache:clear --env=prod
 
+#create build file
+cat >../build.json <<EOF
+{
+  "version": "$VERSION"
+}
+EOF
+
 #build archive
 rm -rf web/e-media-data
 rm -rf var/cache/*

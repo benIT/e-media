@@ -26,6 +26,7 @@
             </a>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="{{ path('home_index') }}">{% trans %}home{% endtrans %}</a></li>
+                <li role="presentation"><a href="{{ path('home_version') }}">{% trans %}version{% endtrans %}</a></li>
                 <li role="presentation"><a data-toggle="modal" data-target="#myModal" href="#">{% trans %}about.button{% endtrans %}</a></li>
                 <li role="presentation">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

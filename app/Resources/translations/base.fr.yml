@@ -1,4 +1,5 @@
 home: Accueil
+version: Version
 about:
   button: A propos
   modal:

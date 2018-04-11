@@ -4,7 +4,9 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends Controller
 {
@@ -17,5 +19,18 @@ class HomeController extends Controller
         return $this->render('home/index.html.twig', [
             'latestVideos' => $latestVideos,
         ]);
+    }
+
+    public function versionAction(Request $request)
+    {
+        $fileSystem = new Filesystem();
+        $buildFile = $this->get('kernel')->getRootDir() . '/../build.json';
+        if ($fileSystem->exists($buildFile)) {
+            $versionInfo = json_decode(file_get_contents($buildFile));
+        }
+        return $this->render('home/version.html.twig', [
+            'versionInfo' => isset($versionInfo) ? $versionInfo : null,
+        ]);
+
     }
 }

@@ -2,3 +2,7 @@ home_index:
     path:     /
     defaults: { _controller: "AppBundle:Home:index" }
     methods:  GET
+home_version:
+    path:     /version
+    defaults: { _controller: "AppBundle:Home:version" }
+    methods:  GET

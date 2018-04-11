@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "version" %}
+
+{% block body %}
+    <h1>{{ app_short_title }}</h1>
+    <div class="jumbotron">
+        <p class="lead">{% trans %}about_this_page_title{% endtrans %}</p>
+        <div class="row">
+            {% trans %}about_this_page_body{% endtrans %}<br>
+            {% if versionInfo and versionInfo.version %}
+                <a href="https://github.com/benIT/e-media/releases/{{ versionInfo.version }}">                {% trans %}software_version{% endtrans %}: {{ versionInfo.version }}</a>
+                <br>
+            {% else %}
+                {% trans %}cannot_determine_version{% endtrans %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

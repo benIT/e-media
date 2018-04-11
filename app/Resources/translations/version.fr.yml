@@ -1,0 +1,4 @@
+software_version: version du logiciel
+about_this_page_title: A propos de cette page
+about_this_page_body: Cette page a pour but de faciliter le suivi de la version qui est actuellement déployée.
+cannot_determine_version: Impossible de déterminer automatiquement la version qui est installée. Vérifier la présence du fichier de build.
