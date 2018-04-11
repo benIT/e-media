@@ -23,8 +23,21 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
     public function load(ObjectManager $manager)
     {
 
-        $data = UserFixturesData::$data;
         $userManager = $this->container->get('fos_user.user_manager');
+        //let 's create an admin
+        /** @var User $user */
+        $user = $userManager->createUser();
+        $user->setFirstName('admin');
+        $user->setLastName('admin');
+        $user->setUsername('admin');
+        $user->setEmail('admin' . '@mail.com');
+        $user->setPlainPassword('admin');
+        $user->setEnabled(true);
+        $user->addRole('ROLE_ADMIN');
+        $userManager->updateUser($user);
+
+        //let's create simple users
+        $data = UserFixturesData::$data;
         $count = 0;
         foreach ($data as $userData) {
             echo '.';
