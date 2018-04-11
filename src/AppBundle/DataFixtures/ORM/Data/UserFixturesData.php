@@ -5,9 +5,9 @@ namespace AppBundle\DataFixtures\ORM\Data;
 class UserFixturesData
 {
     public static $data = [
-        ['firstName' => 'mary', 'lastName' => 'smith'],
-        ['firstName' => 'patricia', 'lastName' => 'johnson'],
-        ['firstName' => 'linda', 'lastName' => 'williams'],
+        ['firstName' => 'christophe', 'lastName' => 'christophe'],
+        ['firstName' => 'pierre', 'lastName' => 'pierre'],
+        ['firstName' => 'benoit', 'lastName' => 'benoit'],
         ['firstName' => 'barbara', 'lastName' => 'brown'],
         ['firstName' => 'elizabeth', 'lastName' => 'jones'],
         ['firstName' => 'jennifer', 'lastName' => 'miller'],
