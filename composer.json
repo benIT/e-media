@@ -31,7 +31,6 @@
     "imsglobal/lti": "^3.0",
     "incenteev/composer-parameter-handler": "^2.0",
     "oneup/flysystem-bundle": "^3.0",
-    "phpunit/phpunit": "^5.7",
     "sensio/distribution-bundle": "^5.0.19",
     "sensio/framework-extra-bundle": "^3.0.2",
     "symfony/dotenv": "^3.4",
@@ -47,7 +46,9 @@
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.7",
     "sensio/generator-bundle": "^3.0",
-    "symfony/phpunit-bridge": "^3.0"
+    "symfony/phpunit-bridge": "^3.0",
+    "phpunit/phpunit": "^5.7"
+
   },
   "scripts": {
     "symfony-scripts": [
@@ -60,7 +61,6 @@
     ],
     "post-install-cmd": [
       "@symfony-scripts",
-      "@create-data-dir",
       "@dump-translation",
       "php bin/console doctrine:schema:update --force",
       "@fixtures-dev"

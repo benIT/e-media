@@ -18,13 +18,15 @@ rm -rf e-media*
 git clone -b $VERSION git@github.com:benIT/e-media.git
 cd $WORKING_DIR/e-media
 
-#test
-composer install -n
+composer install --no-dev -n
 yarn install
-php bin/console doctrine:schema:drop --env=test --force
-php bin/console doctrine:schema:create --env=test
-composer fixtures-test
-composer test
+
+#test
+#php bin/console doctrine:schema:drop --env=test --force
+#php bin/console doctrine:schema:create --env=test
+#composer fixtures-test
+#composer test
+
 php bin/console cache:clear --env=dev
 php bin/console cache:clear --env=prod
 
