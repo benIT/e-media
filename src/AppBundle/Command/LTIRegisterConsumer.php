@@ -67,8 +67,10 @@ class LTIRegisterConsumer extends Command
         $question = new ConfirmationQuestion('It that ok (y/n)?', false);
         $output->writeln('');
 
-        if (!$helper->ask($input, $output, $question)) {
-            return;
+        if(!$input->getOption('no-interaction')){
+            if (!$helper->ask($input, $output, $question)) {
+                return;
+            }
         }
         $dsn = sprintf('%s:host=%s;dbname=%s', getenv('DB_TYPE'), getenv('DB_HOST'), getenv('DB_NAME'));
         $db = new \PDO($dsn, getenv('DB_USER'), getenv('DB_PWD'));
@@ -81,6 +83,7 @@ class LTIRegisterConsumer extends Command
         $sth = $db->prepare('SELECT * FROM lti2_consumer WHERE consumer_key256=:consumerKey');
         $sth->execute(['consumerKey' => $consumerKey]);
         $result = $sth->fetchAll();
+        dump($result);
         if (!count($result)) {
             throw new \ErrorException('your consumer app has not been created!');
         } else {
