@@ -33,4 +33,5 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/video/, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/stream/, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/home, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }

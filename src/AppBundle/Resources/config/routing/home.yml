@@ -1,5 +1,5 @@
 home_index:
-    path:     /
+    path:     /home
     defaults: { _controller: "AppBundle:Home:index" }
     methods:  GET
 home_version:
