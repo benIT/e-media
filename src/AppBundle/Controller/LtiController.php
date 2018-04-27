@@ -27,7 +27,7 @@ class LtiController extends Controller
         $ltiToolProvider = $this->get('app.lti.provider');
         $ltiToolProvider->setRequest($request);
         $ltiToolProvider->handleRequest();
-        return new RedirectResponse($this->get('router')->generate('video_hls', ['id' => $video->getId()]));
+        return new RedirectResponse($this->get('router')->generate('video_show', ['id' => $video->getId()]));
     }
 
 }
