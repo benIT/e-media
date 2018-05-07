@@ -60,10 +60,13 @@ class StreamController extends Controller
      * @param $file
      * @return BinaryFileResponse
      */
-    public function downloadHlsPlaylistFileAction(Request $request, Video $video, $file)
+    public function downloadHlsPlaylistFileAction(Request $request, Video $video, $file, $frameSize)
     {
         $videoPath = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
-        $filePath = pathinfo($videoPath)['dirname'] . '/' . $file;
+
+        $filePath = $frameSize ? pathinfo($videoPath)['dirname'] . '/' . $frameSize . '/' . $file : pathinfo($videoPath)['dirname'] . '/' . $file;
+
+//        $filePath = pathinfo($videoPath)['dirname'] . '/' . $file;
         $response = new BinaryFileResponse($filePath);
         $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_INLINE, basename($filePath));
         return $response;
@@ -78,7 +81,6 @@ class StreamController extends Controller
      */
     public function HlsAction(Request $request, Video $video)
     {
-
         $videoPath = $this->get('vich_uploader.storage')->resolvePath($video, 'videoFile');
         $fs = new Filesystem();
         $playlistFile = getenv('HLS_PLAYLIST_NAME');
@@ -90,10 +92,10 @@ class StreamController extends Controller
         if ($fs->exists($errorFileLocation)) {
             $error = $this->get('translator')->trans('encoding.error', [], 'stream');
             $this->flashMessage(ControllerUtilsTrait::$flashDanger, $error);
-        }elseif ($fs->exists($lockFileLocation)) {
+        } elseif ($fs->exists($lockFileLocation)) {
             $error = $this->get('translator')->trans('encoding.pending', [], 'stream');
             $this->flashMessage(ControllerUtilsTrait::$flashInfo, $error);
-        }elseif(!$fs->exists($playlistFileLocation)) {
+        } elseif (!$fs->exists($playlistFileLocation)) {
             $error = $this->get('translator')->trans('encoding.no-playlist', [], 'stream');
             $this->flashMessage(ControllerUtilsTrait::$flashDanger, $error);
         }

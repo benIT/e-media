@@ -52,6 +52,7 @@ module.exports = function (grunt) {
                         'node_modules/chosen-js/chosen.min.css',
                         'node_modules/slabText/css/slabtext.css',
                         'node_modules/videosjs-assets/dist/video-js.min.css',
+                        'node_modules/videojs-qualityselector/dist/videojs-qualityselector.css'
                     ],
                     'web/assets/dist/css/app.min.css': [
                         'web/assets/css/jumbotron-narrow.css',
@@ -95,8 +96,8 @@ module.exports = function (grunt) {
                     'node_modules/videosjs-assets/dist/video.min.js',
                     'node_modules/slabText/js/jquery.slabtext.js',
                     'vendor/willdurand/js-translation-bundle/Resources/public/js/translator.min.js',
-                    'node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js'
-
+                    'node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js',
+                    'node_modules/videojs-qualityselector/dist/videojs-qualityselector.js',
                 ],
                 dest: 'web/assets/dist/js/vendors.min.js'
             }

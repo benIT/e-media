@@ -23,6 +23,7 @@
     "load-grunt-tasks": "^0.6.0",
     "slabText": "freqdec/slabText#^2.2.0",
     "videojs-contrib-hls": "^5.12.2",
+    "videojs-qualityselector": "0.0.4",
     "videosjs-assets": "benIT/videosjs-assets"
   },
   "scripts": {
