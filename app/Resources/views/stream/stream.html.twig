@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "stream" %}
+{% block body %}
+    <h2>{{ video.title }}</h2>
+    <div class="row marketing">
+    {% if not error %}
+        <div style="background-color: #eceeef;border-radius: 3px; padding: 20px" class="col-lg-12">
+        <p class="lead"> {{ video.description }}</p>
+        <video id="my-video" class="video-js js-default-skin vjs-16-9" controls width="200px" poster="{{ asset('assets/dist/image/video-poster.png') }}" data-setup="{}">
+            <source src="{{ absolute_url(path('stream_download_hls_file',{'id':video.id,'frameSize': frameSize,'file': 'index.m3u8'} )) }}" type="application/x-mpegURL">
+        </video>
+        <form action="">
+            <select data-placeholder="{% trans %}framesize.switcher{% endtrans %}" class="form-control chosen-select quality-selector" tabindex="1">
+                <option value=""></option>
+                {% set frameSizes = ['720x480', '1280x720'] %}
+                {% for  frameSize in frameSizes %}
+                    {% if  app.request.uri != absolute_url(path('stream_video',{'id':video.id,'frameSize': frameSize} )) %}
+                        {% set label='framesize.'~frameSize|raw %}
+                        <option value="{{ absolute_url(path('stream_video',{'id':video.id,'frameSize': frameSize} )) }}">{{ label|trans }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </form>
+        <a class="btn btn-primary" href="{{ path('video_index') }}">{% trans from "common" %}back{% endtrans %}</a>
+    {% else %}
+        <img class="img-centered" src="{{ asset('assets/dist/image/tv-broken.png') }}" width="250px" alt="">
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block javascripts%}
+<script>
+    $('.quality-selector').on('change', function(evt, params) {
+        console.log( params.selected);
+        if(window.location.href !== params.selected){
+         window.location= params.selected;
+        }
+    });
+{% if error %}
+    setTimeout(function() { window.location=window.location;},10000);
+{% endif %}
+</script>
+{% endblock %}

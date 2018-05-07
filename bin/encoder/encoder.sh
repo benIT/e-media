@@ -23,7 +23,7 @@ do
     ffmpeg -i ${DIR}/${FRAME_SIZE}/${FILENAME}.${EXTENSION}  -hls_list_size 0 -f hls ${DIR}/${FRAME_SIZE}/index.m3u8 2> /dev/null
 done
 #generate hls segment and playlist for original uploaded file too
-ffmpeg -i ${NEWFILE} -hls_list_size 0 -f hls ${DIR}/index.m3u8 2> /dev/null
+#ffmpeg -i ${NEWFILE} -hls_list_size 0 -f hls ${DIR}/index.m3u8 2> /dev/null
 if [ $? -eq 0 ]; then
     log "$LEVEL_INFO" "video encoded: ${NEWFILE}"
 else
