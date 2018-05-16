@@ -20,7 +20,7 @@ do
     mkdir -p ${DIR}/${FRAME_SIZE}
     #generate framesize
     ffmpeg -i ${NEWFILE} -c:a copy -s ${FRAME_SIZE} "${DIR}/${FRAME_SIZE}/${FILENAME}.${EXTENSION}" 2> /dev/null
-    ffmpeg -i ${DIR}/${FRAME_SIZE}/${FILENAME}.${EXTENSION}  -hls_list_size 0 -f hls ${DIR}/${FRAME_SIZE}/index.m3u8 2> /dev/null
+    ffmpeg -i ${DIR}/${FRAME_SIZE}/${FILENAME}.${EXTENSION} -hls_time ${SEGMENT_DURATION} -g ${SEGMENT_DURATION} -hls_list_size 0 -f hls ${DIR}/${FRAME_SIZE}/index.m3u8 2> /dev/null
 done
 #generate hls segment and playlist for original uploaded file too
 #ffmpeg -i ${NEWFILE} -hls_list_size 0 -f hls ${DIR}/index.m3u8 2> /dev/null
