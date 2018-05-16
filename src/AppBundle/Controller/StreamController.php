@@ -3,16 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Video;
-use AppBundle\Exception\VideoEncodingErrorException;
-use AppBundle\Exception\VideoEncodingPendingException;
-use AppBundle\Exception\VideoNotEncodedException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class StreamController extends Controller
 {
@@ -69,7 +64,6 @@ class StreamController extends Controller
         return $this->render('stream/stream.html.twig', array(
             'error' => $error,
             'video' => $video,
-            'playlistFileLocation' => $playlistFileLocation,
             'frameSize' => $frameSize
         ));
     }

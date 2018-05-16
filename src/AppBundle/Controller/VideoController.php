@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Video;
+use AppBundle\Services\XsendFileResponseManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
@@ -193,7 +194,7 @@ class VideoController extends Controller
                 // slash management in lginx stream location
                 $nginxLocationXSendFile = substr($nginxLocationXSendFile, -1) === '/' ? $nginxLocationXSendFile : $nginxLocationXSendFile . '/';
                 $nginxLocationXSendFile = substr($nginxLocationXSendFile, 0, 1) === '/' ? $nginxLocationXSendFile : '/' . $nginxLocationXSendFile;
-                $response->headers->set('X-Accel-Redirect', $nginxLocationXSendFile . 'video/' . basename(pathinfo($videoPath)['dirname']) . '/' . pathinfo($videoPath)['basename']);
+                $response->headers->set('X-Accel-Redirect', $nginxLocationXSendFile . '/' . basename(pathinfo($videoPath)['dirname']) . '/' . pathinfo($videoPath)['basename']);
             } elseif (preg_match('/apache/', $serverSoftware)) {
                 $response->headers->set('X-Sendfile', $videoPath);
             } else {

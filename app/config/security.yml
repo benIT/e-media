@@ -34,4 +34,4 @@ security:
         - { path: ^/video/, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/stream/, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/home, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, role: IS_AUTHENTICATED_FULLY }
