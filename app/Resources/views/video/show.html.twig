@@ -1,32 +1,73 @@
 {% extends 'base.html.twig' %}
 {% trans_default_domain "video" %}
 {% block body %}
-    <h2>{{ video.title }}</h2>
-    <div class="row marketing">
-        <div style="background-color: #eceeef;border-radius: 3px; padding: 20px" class="col-lg-12">
-            <p class="lead"> {{ video.description }}</p>
-            <video id="my-video" class="video-js js-default-skin vjs-16-9" controls preload="auto" width="640" height="264"
-                   poster="{{ asset('assets/dist/image/video-poster.png') }}"
-                   data-setup="{}">
-                <source src="{{ path('video_download',{'id':video.id}) }}" type='video/mp4'>
-                {#<source src="MY_VIDEO.webm" type='video/webm'>#}
-                <p class="vjs-no-js">
-                    To view this video please enable JavaScript, and consider upgrading to a web browser that
-                    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                </p>
-            </video>
-            {% trans %}index.tag{% endtrans %}
-            {% for tag in video.tags %}
-                <a href="{{ path('tag_show',{'id':tag.id}) }}">
-                    <div class="tag">{{ tag.name }}</div>
-                </a>
-            {% endfor %}
-            {% trans %} index.created_by{% endtrans %} : <a href="{{ path('user_show',{'id':video.creator.id}) }}">{{ video.creator }}</a>
+    <style>
+        .row{
+            padding-bottom: 20px;
+        }
+    </style>
+    <h2>Informations</h2>
+    <div style="background-color:#eceeef;border-radius: 3px; padding: 20px">
+        <div class="row">
+            <div class="col-lg-2">
+                {% trans %}index.video_title{% endtrans %}
+            </div>
+            <div class="col-lg-8">
+                {{ video.title }}
+            </div>
         </div>
+        <div class="row">
+            <div class="col-lg-2">
+                {% trans %}index.description{% endtrans %}
+            </div>
+            <div class="col-lg-8">
+                {{ video.description }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                {% trans %}index.tag{% endtrans %}
+            </div>
+            <div class="col-lg-8">
+                {% for tag in video.tags %}
+                    <a class="btn btn-default" href="{{ path('tag_show',{'id':tag.id}) }}">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                {% trans %} index.created_by{% endtrans %}
+            </div>
+            <div class="col-lg-8">
+                <a class="btn btn-default" href="{{ path('user_show',{'id':video.creator.id}) }}">{{ video.creator }}</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                {% trans from "common" %}actions{% endtrans %}
+            </div>
+            <div class="col-lg-8">
+                <a class="btn btn-primary" href="{{ path('video_edit',{'id': video.id}) }}">{% trans from "common" %}update{% endtrans %}</a>
+                <a class="btn btn-info" data-toggle="modal" data-target="#modal-share-video" href="#">{% trans from "common" %}share{% endtrans %}</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                {% trans %}form_create.file{% endtrans %}
+            </div>
+            <div class="col-lg-10">
+                <video id="my-video" class="video-js js-default-skin vjs-16-9" controls preload="auto"
+                       poster="{{ asset('assets/dist/image/video-poster.png') }}"
+                       data-setup="{}">
+                    <source src="{{ path('video_download',{'id':video.id}) }}" type='video/mp4'>
+                    <p class="vjs-no-js">
+                        To view this video please enable JavaScript, and consider upgrading to a web browser that
+                        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                    </p>
+                </video>
 
-        <a href="{{ path('video_edit',{'id': video.id}) }}">{% trans from "common" %}update{% endtrans %}</a> -
-        <a data-toggle="modal" data-target="#modal-share-video" href="#">{% trans from "common" %}share{% endtrans %}</a>
-
+            </div>
+        </div>
     </div>
     <a class="btn btn-primary" href="{{ path('video_index') }}">{% trans from "common" %}back{% endtrans %}</a>
     <div class="modal fade" id="modal-share-video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,7 +84,7 @@
                         {% set videoLink =   absolute_url(path('video_download',{'id':video.id})) %}
                         {% trans from "video" %}share.download{% endtrans %} : <a href="{{ videoLink }}">{{ videoLink }}</a> <br>
                         <img class='img-centered' src="{{ qrcode_data_uri(videoLink, { writer: 'svg', size: 150 }) }}"/><br>
-                        {% set videoLinkHls =   absolute_url(path('video_hls',{'id':video.id})) %}
+                        {% set videoLinkHls =   absolute_url(path('stream_video',{'id':video.id})) %}
                         {% trans from "video" %}share.hls{% endtrans %} : <a href="{{ videoLinkHls }}">{{ videoLinkHls }}</a> <br>
                         <img class='img-centered' src="{{ qrcode_data_uri(videoLink, { writer: 'svg', size: 150 }) }}"/><br>
                         {% set videoLinkLti =   absolute_url(path('lti_show',{'id':video.id})) %}

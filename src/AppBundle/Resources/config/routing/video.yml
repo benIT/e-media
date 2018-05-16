@@ -32,3 +32,8 @@ video_search:
     path:     /search
     defaults: { _controller: "AppBundle:Video:search" }
     methods:  GET
+
+video_download:
+    path:     /download/{id}
+    defaults: { _controller: "AppBundle:Video:download" }
+    methods:  GET

@@ -7,6 +7,7 @@
         $('select').chosen({
             allow_single_deselect: true,
             placeholder_text: Translator.trans('select.multiple', {}, 'common'),
+            width: '100%'
         });
         $('#loading').fadeOut();
     });

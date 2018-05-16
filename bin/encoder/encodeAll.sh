@@ -23,13 +23,16 @@ done
 for CURRENTDIR in $(ls -d ${MONITORDIR}/*)
 do
     echo ${CURRENTDIR}
-    if [ -f ${CURRENTDIR}/index.m3u8 ]; then
-        if [ "${ENCODE_EXISTING}" = true ]; then
-            launchEncoding ${CURRENTDIR}
+    for FRAME_SIZE in "${FRAME_SIZES_TO_PROCESS[@]}"
+    do
+        if [ -f ${CURRENTDIR}/${FRAME_SIZE}/index.m3u8 ]; then
+            if [ "${ENCODE_EXISTING}" = true ]; then
+                launchEncoding ${CURRENTDIR}
+            else
+                log "$LEVEL_INFO" "${CURRENTDIR}/${FRAME_SIZE} already encoded!"
+            fi
         else
-            log "$LEVEL_INFO" "${CURRENTDIR} already encoded!"
+            launchEncoding ${CURRENTDIR}
         fi
-    else
-        launchEncoding ${CURRENTDIR}
-    fi
+    done
 done

@@ -1,13 +1,8 @@
-video_download:
-    path:     /{id}
-    defaults: { _controller: "AppBundle:Stream:download" }
+stream_video:
+    path:     /{id}/{frameSize}
+    defaults: { _controller: "AppBundle:Stream:stream", frameSize: '720x480' }
     methods:  GET
-video_hls:
-    path:     /{id}/hls/{file}
-    defaults: { _controller: "AppBundle:Stream:Hls", file: null  }
-    methods:  GET
-video_hls_download_playlist_file:
-  path:     /{id}/hls-download/{file}
-  defaults: { _controller: "AppBundle:Stream:downloadHlsPlaylistFile" }
+stream_download_hls_file:
+  path:     /{id}/hls/framesize/{frameSize}/file/{file}
+  defaults: { _controller: "AppBundle:Stream:downloadHlsFile" }
   methods:  GET
-
